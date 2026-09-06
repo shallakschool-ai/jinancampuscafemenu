@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b7455" />
 
   <title>Jinan Campus Café | Menu</title>
 
@@ -12,25 +13,28 @@
 
   <style>
     :root{
-      --green:#0b6b3a;
-      --green-dark:#064529;
-      --green-deep:#032d1c;
-      --green-soft:#e8f3ec;
+      --green:#0b7455;
+      --green-dark:#07523e;
+      --green-deep:#053b2e;
+      --mint:#eaf5f0;
 
-      --cream:#f7f2e9;
-      --cream-2:#fcfaf6;
+      --orange:#f1a33a;
+      --gold:#d9ad67;
 
-      --brown:#8a603b;
-      --gold:#d6a85b;
+      --cream:#f7f2e8;
+      --cream-2:#fffdf8;
+      --paper:#ffffff;
 
-      --text:#18221c;
-      --muted:#718078;
-      --white:#ffffff;
+      --text:#202721;
+      --muted:#778079;
+      --line:#e8e5dc;
 
-      --border:rgba(20,70,45,.10);
+      --shadow:0 20px 55px rgba(31,53,43,.10);
+      --shadow-soft:0 10px 30px rgba(31,53,43,.07);
 
-      --shadow:
-        0 18px 50px rgba(28,52,38,.10);
+      --radius-xl:30px;
+      --radius-lg:22px;
+      --radius-md:16px;
     }
 
     *{
@@ -44,21 +48,12 @@
     }
 
     body{
-      font-family:"Tajawal",Arial,sans-serif;
-      background:
-        linear-gradient(
-          180deg,
-          #f6f1e8 0,
-          #fcfaf7 520px,
-          #f8faf8 100%
-        );
+      font-family:"Tajawal", Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(circle at 0 0, rgba(241,163,58,.08), transparent 22%),
+        linear-gradient(180deg,#f6efe3 0,#fbf8f2 480px,#f8faf8 100%);
       min-height:100vh;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
     }
 
     button,
@@ -66,1147 +61,860 @@
       font-family:inherit;
     }
 
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-    /* ========================================
-       HERO
-    ======================================== */
+    img{
+      display:block;
+      max-width:100%;
+    }
 
-    .hero{
-      min-height:620px;
-      position:relative;
+    /* ================= HEADER ================= */
+
+    .topbar{
+      position:absolute;
+      top:0;
+      right:0;
+      left:0;
+      z-index:20;
+      padding:18px 0;
+    }
+
+    .topbar-inner{
+      width:min(1180px,92%);
+      margin:auto;
       display:flex;
       align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand-logo{
+      height:58px;
+      width:auto;
+      padding:7px 11px;
+      background:rgba(255,255,255,.96);
+      border-radius:15px;
+      box-shadow:0 8px 25px rgba(0,0,0,.10);
+    }
+
+    .brand-name{
+      color:white;
+      line-height:1.1;
+    }
+
+    .brand-name strong{
+      display:block;
+      direction:ltr;
+      text-align:right;
+      font-size:16px;
+      letter-spacing:.5px;
+    }
+
+    .brand-name small{
+      display:block;
+      margin-top:4px;
+      color:rgba(255,255,255,.68);
+      font-size:11px;
+    }
+
+    .order-top{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      min-height:44px;
+      padding:0 17px;
+      border-radius:999px;
+      background:white;
+      color:var(--green-dark);
+      font-weight:800;
+      font-size:13px;
+      box-shadow:0 10px 30px rgba(0,0,0,.13);
+      transition:.2s ease;
+    }
+
+    .order-top:hover{
+      transform:translateY(-2px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      min-height:540px;
+      position:relative;
       overflow:hidden;
+      display:flex;
+      align-items:center;
 
       background:
         linear-gradient(
           90deg,
-          rgba(3,34,20,.96) 0%,
-          rgba(5,57,32,.91) 37%,
-          rgba(5,57,32,.54) 65%,
-          rgba(5,57,32,.20) 100%
+          rgba(4,48,36,.97) 0%,
+          rgba(5,69,50,.92) 39%,
+          rgba(5,69,50,.56) 67%,
+          rgba(5,69,50,.20) 100%
         ),
-        url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1800&q=85")
+        url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=2000&q=88")
         center/cover no-repeat;
     }
 
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:rgba(241,163,58,.16);
+      filter:blur(90px);
+      left:18%;
+      bottom:-310px;
+    }
 
     .hero::after{
       content:"";
       position:absolute;
-      inset:auto 0 0;
+      right:0;
+      left:0;
+      bottom:0;
       height:150px;
-
-      background:
-        linear-gradient(
-          to top,
-          var(--cream),
-          transparent
-        );
+      background:linear-gradient(to top,var(--cream),transparent);
     }
 
-
-    .hero-glow{
-      position:absolute;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      background:rgba(214,168,91,.16);
-      filter:blur(90px);
-      left:15%;
-      bottom:-170px;
-    }
-
-
-    .hero-content{
+    .hero-inner{
       width:min(1180px,92%);
       margin:auto;
-      position:relative;
-      z-index:3;
       color:white;
-      padding:80px 0 120px;
+      position:relative;
+      z-index:4;
+      padding:72px 0 105px;
     }
 
-
-    .eyebrow{
-      display:flex;
+    .hero-kicker{
+      display:inline-flex;
       align-items:center;
-      gap:10px;
-
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:2.5px;
-
+      gap:9px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.09);
+      backdrop-filter:blur(12px);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1.3px;
       direction:ltr;
-      justify-content:flex-end;
-
-      opacity:.85;
-      margin-bottom:18px;
     }
-
-
-    .eyebrow::before{
-      content:"";
-      width:42px;
-      height:1px;
-      background:var(--gold);
-    }
-
 
     .hero h1{
-      font-size:clamp(42px,7vw,82px);
-      line-height:.96;
-      max-width:760px;
+      margin-top:20px;
+      max-width:740px;
+      font-size:clamp(46px,7vw,82px);
+      line-height:.98;
       font-weight:900;
       letter-spacing:-2px;
     }
 
-
-    .hero h1 .light{
+    .hero h1 span{
       display:block;
+      margin-top:9px;
       font-weight:400;
-      color:#eed9ad;
-      margin-top:8px;
+      color:#efc985;
     }
 
-
-    .hero-description{
+    .hero p{
+      max-width:610px;
       margin-top:25px;
-      max-width:560px;
-
       font-size:18px;
-      line-height:1.8;
-
-      color:rgba(255,255,255,.83);
+      line-height:1.85;
+      color:rgba(255,255,255,.82);
     }
-
 
     .hero-actions{
-      margin-top:32px;
+      margin-top:31px;
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
+      gap:11px;
     }
 
-
-    .hero-button{
-      height:50px;
-      padding:0 23px;
-
+    .primary-btn,
+    .ghost-btn{
+      min-height:50px;
+      padding:0 22px;
+      border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:9px;
-
-      border-radius:50px;
-
-      background:var(--white);
-      color:var(--green-dark);
-
-      font-size:15px;
+      gap:8px;
+      font-size:14px;
       font-weight:800;
-
-      transition:.25s ease;
+      transition:.2s ease;
     }
 
-
-    .hero-button:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 25px rgba(0,0,0,.18);
+    .primary-btn{
+      background:white;
+      color:var(--green-deep);
     }
 
-
-    .hero-button.secondary{
-      background:rgba(255,255,255,.10);
+    .ghost-btn{
       color:white;
-      border:1px solid rgba(255,255,255,.23);
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.09);
       backdrop-filter:blur(10px);
     }
 
 
-    /* ========================================
-       PAGE
-    ======================================== */
+    .wa-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      line-height:0;
+    }
+
+    .wa-icon svg{
+      display:block;
+    }
+
+    .primary-btn:hover,
+    .ghost-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* ================= PAGE ================= */
 
     .page{
       width:min(1180px,92%);
-      margin:-65px auto 70px;
+      margin:-58px auto 70px;
       position:relative;
       z-index:10;
     }
 
-
-    /* ========================================
-       EXPERIENCE CARDS
-    ======================================== */
-
-    .experience-grid{
-      display:grid;
-      grid-template-columns:1.4fr 1fr 1fr;
-      gap:16px;
-      margin-bottom:35px;
-    }
+    /* ================= VISUAL CARDS ================= */
 
 
-    .experience-card{
-      min-height:235px;
-      border-radius:26px;
-      overflow:hidden;
-      position:relative;
 
-      box-shadow:var(--shadow);
-      background:#ddd;
-
-      isolation:isolate;
-    }
-
-
-    .experience-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-
-      position:absolute;
-      inset:0;
-
-      transition:transform .6s ease;
-    }
-
-
-    .experience-card:hover img{
-      transform:scale(1.06);
-    }
-
-
-    .experience-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:1;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(3,30,18,.88),
-          rgba(3,30,18,.08) 70%
-        );
-    }
-
-
-    .experience-content{
-      position:absolute;
-      z-index:2;
-      bottom:0;
-      right:0;
-      left:0;
-
-      padding:23px;
-      color:white;
-    }
-
-
-    .experience-label{
-      font-size:12px;
-      color:#f0d9a9;
-      font-weight:700;
-      margin-bottom:6px;
-    }
-
-
-    .experience-title{
-      font-size:21px;
-      font-weight:800;
-    }
-
-
-    /* ========================================
-       SEARCH / NAV
-    ======================================== */
+    /* ================= MENU TOOLS ================= */
 
     .menu-tools{
-      background:rgba(255,255,255,.88);
-      border:1px solid var(--border);
-      border-radius:22px;
-
-      padding:14px;
-
+      position:sticky;
+      top:10px;
+      z-index:40;
       display:flex;
       align-items:center;
       gap:12px;
-
-      box-shadow:
-        0 12px 35px rgba(24,50,34,.07);
-
-      backdrop-filter:blur(16px);
-
-      position:sticky;
-      top:12px;
-      z-index:50;
+      padding:12px;
+      border:1px solid rgba(6,82,61,.09);
+      background:rgba(255,255,255,.91);
+      border-radius:20px;
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(18px);
     }
-
 
     .search{
       flex:1;
-      min-width:220px;
-
+      min-width:230px;
       display:flex;
       align-items:center;
-      gap:10px;
-
-      padding:0 16px;
-      height:48px;
-
-      border-radius:15px;
+      gap:9px;
+      height:47px;
+      padding:0 15px;
+      border-radius:14px;
       background:#f5f7f5;
       border:1px solid transparent;
-
-      transition:.2s;
     }
-
 
     .search:focus-within{
       background:white;
-      border-color:rgba(11,107,58,.35);
-      box-shadow:
-        0 0 0 4px rgba(11,107,58,.07);
+      border-color:rgba(11,116,85,.25);
+      box-shadow:0 0 0 4px rgba(11,116,85,.06);
     }
-
 
     .search input{
-      flex:1;
-      width:100%;
       border:0;
-      outline:none;
+      outline:0;
       background:transparent;
-      font-size:15px;
-      color:var(--text);
-    }
-
-
-    .search-icon{
-      font-size:17px;
-      opacity:.55;
-    }
-
-
-    .chips{
-      display:flex;
-      gap:7px;
-      overflow-x:auto;
-      scrollbar-width:none;
-    }
-
-
-    .chips::-webkit-scrollbar{
-      display:none;
-    }
-
-
-    .chip{
-      height:42px;
-      padding:0 17px;
-
-      flex:none;
-
-      border-radius:50px;
-      border:1px solid #e3e9e5;
-      background:white;
-
-      color:#59645e;
-
-      font-size:13px;
-      font-weight:700;
-
-      cursor:pointer;
-      transition:.2s;
-    }
-
-
-    .chip:hover{
-      border-color:#b9d3c3;
-      color:var(--green);
-    }
-
-
-    .chip.active{
-      background:var(--green);
-      color:white;
-      border-color:var(--green);
-      box-shadow:
-        0 7px 20px rgba(11,107,58,.20);
-    }
-
-
-    /* ========================================
-       MENU HEADER
-    ======================================== */
-
-    .menu-heading{
-      margin:52px 0 24px;
-
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-
-    .menu-heading-small{
-      color:var(--brown);
-      font-size:12px;
-      letter-spacing:1px;
-      font-weight:800;
-      margin-bottom:5px;
-    }
-
-
-    .menu-heading h2{
-      font-size:34px;
-      line-height:1.2;
-      color:var(--green-dark);
-    }
-
-
-    .menu-heading p{
-      margin-top:7px;
-      color:var(--muted);
-      line-height:1.6;
+      width:100%;
       font-size:14px;
     }
 
-
-    .count{
-      background:var(--green-soft);
-      color:var(--green);
-
-      border-radius:50px;
-      padding:8px 14px;
-
-      font-size:13px;
-      font-weight:700;
-
-      flex:none;
+    .category-strip{
+      display:flex;
+      gap:7px;
+      overflow:auto;
+      scrollbar-width:none;
     }
 
+    .category-strip::-webkit-scrollbar{
+      display:none;
+    }
 
-    /* ========================================
-       FEATURE BANNER
-    ======================================== */
+    .category-btn{
+      flex:none;
+      height:42px;
+      padding:0 15px;
+      border-radius:999px;
+      border:1px solid #e5e9e6;
+      background:white;
+      color:#5f6963;
+      font-size:12px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
 
-    .feature-banner{
-      min-height:180px;
+    .category-btn:hover{
+      color:var(--green);
+      border-color:#bfd8ce;
+    }
 
-      margin-bottom:20px;
-      padding:28px 30px;
+    .category-btn.active{
+      background:var(--green);
+      color:white;
+      border-color:var(--green);
+      box-shadow:0 8px 20px rgba(11,116,85,.17);
+    }
 
-      border-radius:24px;
+    .soon-dot{
+      display:inline-block;
+      margin-right:4px;
+      padding:2px 6px;
+      border-radius:999px;
+      background:#fff1d9;
+      color:#9b650f;
+      font-size:9px;
+    }
 
+    /* ================= SECTION ================= */
+
+    .section-head{
+      margin:50px 0 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+    }
+
+    .section-head small{
+      display:block;
+      color:#9a6c35;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:1.2px;
+      direction:ltr;
+      text-align:right;
+    }
+
+    .section-head h2{
+      margin-top:3px;
+      color:var(--green-deep);
+      font-size:31px;
+      line-height:1.2;
+    }
+
+    .section-head p{
+      margin-top:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .result-count{
+      flex:none;
+      padding:8px 13px;
+      border-radius:999px;
+      background:var(--mint);
+      color:var(--green-dark);
+      font-size:12px;
+      font-weight:800;
+    }
+
+    /* ================= MENU ================= */
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .menu-card{
+      min-height:102px;
       display:flex;
       align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      padding:17px;
+      border-radius:18px;
+      border:1px solid rgba(15,80,55,.08);
+      background:rgba(255,255,255,.93);
+      box-shadow:0 6px 18px rgba(31,53,43,.035);
+      transition:.22s ease;
+      animation:fadeUp .4s both;
+    }
 
+    .menu-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(11,116,85,.19);
+      box-shadow:0 14px 30px rgba(31,53,43,.075);
+    }
+
+    .item-main{
+      min-width:0;
+      display:flex;
+      align-items:center;
+      gap:13px;
+    }
+
+    .item-icon{
+      width:46px;
+      height:46px;
+      min-width:46px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      font-size:21px;
+      background:linear-gradient(145deg,#f5eddf,#fff);
+      box-shadow:inset 0 0 0 1px rgba(110,80,30,.05);
+    }
+
+    .item-name{
+      direction:rtl;
+      text-align:right;
+      font-size:15px;
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .item-sub{
+      direction:rtl;
+      text-align:right;
+      margin-top:4px;
+      color:#98a099;
+      font-size:10px;
+    }
+
+    .price{
+      direction:ltr;
+      flex:none;
+      min-width:108px;
+      padding:9px 10px;
+      text-align:center;
+      border-radius:13px;
+      background:var(--mint);
+      color:var(--green-dark);
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .price small{
+      display:block;
+      margin-top:1px;
+      font-size:8px;
+      color:#729083;
+      font-weight:700;
+    }
+
+    /* ================= FEATURE ================= */
+
+    .feature{
+      min-height:190px;
+      margin:18px 0 22px;
+      padding:28px;
       position:relative;
       overflow:hidden;
-
+      display:flex;
+      align-items:center;
+      border-radius:25px;
       color:white;
-
       background:
-        linear-gradient(
-          90deg,
-          rgba(3,54,29,.97),
-          rgba(3,54,29,.84),
-          rgba(3,54,29,.18)
-        ),
-        url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80")
+        linear-gradient(90deg,rgba(4,51,36,.96),rgba(4,51,36,.70),rgba(4,51,36,.15)),
+        url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1500&q=85")
         center/cover no-repeat;
     }
 
-
-    .feature-banner-content{
+    .feature-copy{
       max-width:500px;
       position:relative;
       z-index:2;
     }
 
-
-    .feature-banner .mini{
-      color:#f0d9aa;
-      font-size:12px;
-      font-weight:800;
-      margin-bottom:7px;
-    }
-
-
-    .feature-banner h3{
-      font-size:25px;
-      margin-bottom:8px;
-    }
-
-
-    .feature-banner p{
-      color:rgba(255,255,255,.78);
-      font-size:14px;
-      line-height:1.6;
-    }
-
-
-    /* ========================================
-       MENU GRID
-    ======================================== */
-
-    .menu-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:13px;
-    }
-
-
-    .menu-item{
-      position:relative;
-      overflow:hidden;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-
-      min-height:103px;
-      padding:18px 19px;
-
-      background:rgba(255,255,255,.93);
-
-      border:
-        1px solid rgba(18,76,47,.09);
-
-      border-radius:18px;
-
-      box-shadow:
-        0 5px 18px rgba(28,48,35,.035);
-
-      transition:
-        transform .22s ease,
-        box-shadow .22s ease,
-        border .22s ease;
-
-      animation:
-        fadeUp .45s ease both;
-    }
-
-
-    .menu-item::before{
-      content:"";
-      position:absolute;
-      right:0;
-      top:0;
-      bottom:0;
-
-      width:4px;
-
-      background:
-        linear-gradient(
-          var(--green),
-          #60a373
-        );
-
-      opacity:0;
-      transition:.2s;
-    }
-
-
-    .menu-item:hover{
-      transform:translateY(-4px);
-      border-color:rgba(11,107,58,.20);
-
-      box-shadow:
-        0 15px 32px rgba(20,60,35,.09);
-    }
-
-
-    .menu-item:hover::before{
-      opacity:1;
-    }
-
-
-    .food-info{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-
-    .food-icon{
-      width:48px;
-      height:48px;
-      min-width:48px;
-
-      border-radius:15px;
-
-      display:grid;
-      place-items:center;
-
-      font-size:23px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #f4eee2,
-          #fff
-        );
-
-      box-shadow:
-        inset 0 0 0 1px rgba(90,65,30,.06);
-    }
-
-
-    .food-name{
-      font-weight:800;
-      font-size:16px;
-      color:#223128;
-    }
-
-
-    .food-category{
-      margin-top:4px;
-      font-size:11px;
-      color:#909b95;
-    }
-
-
-    .price{
-      flex:none;
-
-      min-width:112px;
-
-      text-align:center;
-
-      padding:10px 11px;
-
-      border-radius:13px;
-
-      color:var(--green-dark);
-      background:var(--green-soft);
-
-      font-size:14px;
+    .feature-copy small{
+      color:#f0c579;
+      font-size:10px;
       font-weight:900;
-
-      direction:rtl;
-    }
-
-
-    .price small{
-      display:block;
-      margin-top:1px;
-
-      font-size:9px;
-      font-weight:700;
-
-      color:#678474;
-    }
-
-
-    /* ========================================
-       COMING SOON / DRINKS
-    ======================================== */
-
-    .drinks-section{
-      margin-top:55px;
-      display:grid;
-      grid-template-columns:1fr 1.3fr;
-      gap:18px;
-    }
-
-
-    .drink-photo{
-      min-height:340px;
-      border-radius:28px;
-      overflow:hidden;
-
-      position:relative;
-
-      background:
-        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85")
-        center/cover no-repeat;
-
-      box-shadow:var(--shadow);
-    }
-
-
-    .drink-photo::after{
-      content:"";
-      position:absolute;
-      inset:0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(2,35,20,.85),
-          transparent 65%
-        );
-    }
-
-
-    .drink-photo-text{
-      position:absolute;
-      z-index:2;
-
-      right:25px;
-      bottom:24px;
-
-      color:white;
-    }
-
-
-    .drink-photo-text small{
-      color:#f0d8a3;
-      font-weight:700;
-    }
-
-
-    .drink-photo-text h3{
-      font-size:25px;
-      margin-top:4px;
-    }
-
-
-    .coming-panel{
-      min-height:340px;
-
-      padding:38px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-
-      border-radius:28px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green-deep),
-          var(--green)
-        );
-
-      color:white;
-
-      position:relative;
-      overflow:hidden;
-    }
-
-
-    .coming-panel::before{
-      content:"CAFÉ";
-
-      position:absolute;
-      left:-15px;
-      bottom:-28px;
-
-      font-size:115px;
-      font-weight:900;
-
-      color:rgba(255,255,255,.04);
-
+      letter-spacing:1.2px;
       direction:ltr;
     }
 
-
-    .coming-tag{
-      width:max-content;
-
-      padding:7px 12px;
-      border-radius:50px;
-
-      background:rgba(255,255,255,.12);
-
-      border:1px solid rgba(255,255,255,.13);
-
-      font-size:11px;
-      font-weight:700;
-
-      margin-bottom:18px;
+    .feature-copy h3{
+      margin-top:5px;
+      font-size:24px;
     }
 
-
-    .coming-panel h3{
-      font-size:33px;
-      line-height:1.25;
-    }
-
-
-    .coming-panel p{
-      margin-top:13px;
-
-      max-width:470px;
-
-      line-height:1.8;
-      color:rgba(255,255,255,.72);
-    }
-
-
-    .coming-items{
-      margin-top:25px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-
-    .coming-item{
-      padding:8px 12px;
-
-      border-radius:50px;
-
-      background:rgba(255,255,255,.08);
-
-      font-size:12px;
-      color:rgba(255,255,255,.82);
-    }
-
-
-    /* ========================================
-       NOTE
-    ======================================== */
-
-    .note{
-      margin-top:25px;
-
-      display:flex;
-      align-items:flex-start;
-      gap:14px;
-
-      padding:19px 21px;
-
-      background:#fffaf0;
-
-      border:
-        1px solid rgba(166,123,57,.15);
-
-      border-radius:17px;
-    }
-
-
-    .note-icon{
-      width:38px;
-      height:38px;
-      min-width:38px;
-
-      display:grid;
-      place-items:center;
-
-      border-radius:11px;
-
-      background:#f1e4c9;
-      font-size:18px;
-    }
-
-
-    .note strong{
-      display:block;
-      color:#76502f;
-      margin-bottom:3px;
-    }
-
-
-    .note p{
-      color:#8a7763;
+    .feature-copy p{
+      margin-top:8px;
+      color:rgba(255,255,255,.76);
+      font-size:13px;
       line-height:1.7;
+    }
+
+    /* ================= قريبًا ================= */
+
+    .coming-grid{
+      margin-top:55px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:17px;
+    }
+
+    .coming-card{
+      min-height:350px;
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      isolation:isolate;
+      background:#ddd;
+    }
+
+    .coming-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:linear-gradient(to top,rgba(4,42,30,.94),rgba(4,42,30,.14) 75%);
+    }
+
+    .coming-copy{
+      position:absolute;
+      z-index:2;
+      right:0;
+      left:0;
+      bottom:0;
+      padding:27px;
+      color:white;
+    }
+
+    .coming-badge{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f2a43b;
+      color:#35220b;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .coming-copy h3{
+      margin-top:10px;
+      font-size:28px;
+    }
+
+    .coming-copy p{
+      margin-top:7px;
+      max-width:510px;
+      line-height:1.7;
+      color:rgba(255,255,255,.76);
       font-size:13px;
     }
 
+    .coming-tags{
+      margin-top:15px;
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+    }
 
-    /* ========================================
-       EMPTY
-    ======================================== */
+    .coming-tags span{
+      unicode-bidi:plaintext;
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,.11);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:10px;
+    }
 
-    .no-results{
-      display:none;
+    /* ================= ORDER ================= */
 
-      padding:60px 20px;
-      text-align:center;
+    .order-section{
+      margin-top:55px;
+      padding:38px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      border-radius:30px;
+      color:white;
+      background:
+        radial-gradient(circle at left top,rgba(241,163,58,.25),transparent 30%),
+        linear-gradient(135deg,var(--green-deep),var(--green));
+      overflow:hidden;
+      position:relative;
+    }
 
+    .order-section::after{
+      content:"81474120";
+      position:absolute;
+      left:-10px;
+      bottom:-32px;
+      font-size:88px;
+      font-weight:900;
+      color:rgba(255,255,255,.035);
+      direction:ltr;
+    }
+
+    .order-copy{
+      position:relative;
+      z-index:2;
+    }
+
+    .order-copy small{
+      font-size:10px;
+      color:#f2cb88;
+      font-weight:900;
+      letter-spacing:1.2px;
+    }
+
+    .order-copy h3{
+      margin-top:4px;
+      font-size:30px;
+    }
+
+    .order-copy p{
+      margin-top:7px;
+      color:rgba(255,255,255,.68);
+      font-size:13px;
+    }
+
+    .phone-btn{
+      position:relative;
+      z-index:2;
+      flex:none;
+      min-width:190px;
+      padding:15px 18px;
+      border-radius:17px;
       background:white;
+      color:var(--green-deep);
+      text-align:center;
+      box-shadow:0 14px 30px rgba(0,0,0,.15);
+    }
 
-      border-radius:22px;
-      border:1px solid var(--border);
+    .phone-btn small{
+      display:block;
+      font-size:9px;
+      color:#809088;
+      font-weight:700;
+    }
 
+    .phone-btn strong{
+      display:block;
+      margin-top:2px;
+      font-size:22px;
+      direction:ltr;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty{
+      display:none;
+      padding:55px 20px;
+      text-align:center;
       color:var(--muted);
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
     }
 
-
-    .no-results .emoji{
-      font-size:38px;
-      margin-bottom:10px;
-    }
-
-
-    /* ========================================
-       FOOTER
-    ======================================== */
+    /* ================= FOOTER ================= */
 
     footer{
-      position:relative;
-      overflow:hidden;
-
-      background:#082b1b;
+      margin-top:70px;
+      padding:45px 20px 28px;
       color:white;
-
-      padding:55px 20px 35px;
+      background:#052f24;
     }
-
 
     .footer-inner{
       width:min(1180px,92%);
       margin:auto;
-
       display:flex;
-      justify-content:space-between;
-      gap:30px;
       align-items:flex-end;
+      justify-content:space-between;
+      gap:25px;
     }
 
-
-    .footer-brand{
-      font-size:27px;
+    .footer-title{
+      font-size:24px;
       font-weight:900;
       direction:ltr;
     }
 
-
-    .footer-brand span{
+    .footer-title span{
       font-weight:400;
-      color:#d9c297;
+      color:#e9c27f;
     }
 
-
-    .footer-text{
+    .footer-sub{
       margin-top:6px;
-      font-size:12px;
-      color:rgba(255,255,255,.55);
-    }
-
-
-    .footer-campus{
-      text-align:left;
-      font-size:12px;
-      color:rgba(255,255,255,.55);
-    }
-
-
-    .copyright{
-      width:min(1180px,92%);
-      margin:30px auto 0;
-
-      padding-top:22px;
-
-      border-top:
-        1px solid rgba(255,255,255,.08);
-
-      text-align:center;
-
-      color:rgba(255,255,255,.35);
+      color:rgba(255,255,255,.52);
       font-size:11px;
     }
 
+    .footer-phone{
+      direction:ltr;
+      text-align:left;
+      font-size:13px;
+      color:rgba(255,255,255,.65);
+    }
+
+    .copyright{
+      width:min(1180px,92%);
+      margin:25px auto 0;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.34);
+      text-align:center;
+      font-size:10px;
+    }
 
     @keyframes fadeUp{
       from{
         opacity:0;
-        transform:translateY(12px);
+        transform:translateY(10px);
       }
-
       to{
         opacity:1;
         transform:translateY(0);
       }
     }
 
+    /* ================= RESPONSIVE ================= */
 
-    /* ========================================
-       TABLET
-    ======================================== */
-
-    @media(max-width:900px){
-
-      .hero{
-        min-height:560px;
-      }
-
-      .experience-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .experience-card:first-child{
-        grid-column:1/-1;
-      }
+    @media(max-width:920px){
 
       .menu-tools{
         flex-direction:column;
         align-items:stretch;
       }
 
-      .chips{
-        width:100%;
-      }
-
-      .drinks-section{
+      .coming-grid{
         grid-template-columns:1fr;
       }
 
-      .drink-photo,
-      .coming-panel{
-        min-height:290px;
+      .order-section{
+        align-items:flex-start;
+        flex-direction:column;
       }
-
     }
 
+    @media(max-width:680px){
+      .topbar{
+        padding-top:12px;
+      }
 
-    /* ========================================
-       MOBILE
-    ======================================== */
+      .brand-logo{
+        height:47px;
+        padding:6px 8px;
+      }
 
-    @media(max-width:650px){
+      .brand-name{
+        display:none;
+      }
+
+      .order-top{
+        min-height:40px;
+        padding:0 13px;
+        font-size:11px;
+      }
 
       .hero{
-        min-height:570px;
-
+        min-height:540px;
+        text-align:center;
         background:
-          linear-gradient(
-            180deg,
-            rgba(3,40,23,.65),
-            rgba(3,40,23,.96)
-          ),
-          url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1100&q=80")
+          linear-gradient(180deg,rgba(4,55,39,.55),rgba(4,55,39,.97)),
+          url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=84")
           center/cover no-repeat;
       }
 
-
-      .hero-content{
-        text-align:center;
-        padding-top:95px;
+      .hero-inner{
+        padding-top:78px;
       }
-
-
-      .eyebrow{
-        justify-content:center;
-      }
-
 
       .hero h1{
-        font-size:48px;
-        margin:auto;
+        font-size:47px;
+        margin-inline:auto;
       }
 
-
-      .hero-description{
-        margin:22px auto 0;
+      .hero p{
+        margin-inline:auto;
         font-size:15px;
       }
-
 
       .hero-actions{
         justify-content:center;
       }
-
 
       .page{
         width:94%;
       }
 
 
-      .experience-grid{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-      }
-
-
-      .experience-card{
-        min-height:180px;
-        border-radius:20px;
-      }
-
-
-      .experience-card:first-child{
-        min-height:235px;
-      }
-
-
-      .experience-title{
-        font-size:17px;
-      }
-
-
-      .experience-content{
-        padding:16px;
-      }
-
-
-      .menu-heading{
-        margin-top:38px;
-      }
-
-
-      .menu-heading h2{
-        font-size:27px;
-      }
-
-
-      .menu-heading p{
-        font-size:13px;
-      }
-
-
       .menu-grid{
         grid-template-columns:1fr;
-        gap:9px;
+        gap:8px;
       }
 
-
-      .menu-item{
+      .menu-card{
         min-height:91px;
-        border-radius:16px;
-        padding:15px;
+        border-radius:15px;
+        padding:14px;
       }
 
-
-      .food-icon{
-        width:44px;
-        height:44px;
-        min-width:44px;
+      .item-icon{
+        width:42px;
+        height:42px;
+        min-width:42px;
       }
 
-
-      .food-name{
-        font-size:15px;
+      .item-name{
+        font-size:14px;
       }
-
 
       .price{
-        min-width:96px;
+        min-width:98px;
         font-size:13px;
       }
 
-
-      .feature-banner{
-        min-height:205px;
-        padding:23px;
-
-        background-position:center;
+      .section-head h2{
+        font-size:25px;
       }
 
-
-      .feature-banner h3{
-        font-size:22px;
+      .feature{
+        min-height:220px;
+        padding:22px;
       }
 
-
-      .coming-panel{
-        padding:27px;
+      .coming-card{
+        min-height:320px;
       }
 
-
-      .coming-panel h3{
-        font-size:27px;
+      .coming-copy h3{
+        font-size:25px;
       }
 
+      .order-section{
+        padding:28px 23px;
+      }
+
+      .phone-btn{
+        width:100%;
+      }
 
       .footer-inner{
         flex-direction:column;
@@ -1214,810 +922,483 @@
         text-align:center;
       }
 
-
-      .footer-campus{
+      .footer-phone{
         text-align:center;
       }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- ======================================
-       HERO
-  ======================================= -->
-
+  <!-- HERO -->
   <header class="hero">
-
-    <div class="hero-glow"></div>
-
-    <div class="hero-content">
-
-      <div class="eyebrow">
-        JINAN CAMPUS
-      </div>
-
-      <h1>
-        Campus
-        <span class="light">
-          Café Menu
-        </span>
+    <div class="hero-inner">
+<h1>
+        Jinan Campus
+        <span>Café Menu</span>
       </h1>
 
-      <p class="hero-description">
-        نكهة طازجة، قهوة طيبة، وأجواء الجامعة...
-        كل شي بتحبه بمكان واحد في Jinan Campus Café.
+      <p>
+        مناقيش ومخبوزات ومعجنات طازجة، بيتزا، باستا، ومشروبات باردة وساخنة.
+        نكهات طازجة وخيارات متنوعة ترافق يومك في الحرم الجامعي.
       </p>
 
       <div class="hero-actions">
-
-        <a
-          href="#menu"
-          class="hero-button"
-        >
-          <span>استكشف المنيو</span>
-          <span>↓</span>
-        </a>
-
-        <a
-          href="#cafe"
-          class="hero-button secondary"
-        >
-          ☕ Campus Vibes
-        </a>
-
+        <a href="#menu" class="primary-btn">شوف المنيو ↓</a>
+        <a href="https://wa.me/96181474120" target="_blank" rel="noopener" class="ghost-btn"><span class="wa-icon" aria-hidden="true">
+  <svg viewBox="0 0 32 32" width="19" height="19" fill="currentColor">
+    <path d="M19.11 17.21c-.46-.23-2.72-1.34-3.14-1.49-.42-.15-.73-.23-1.03.23-.31.46-1.19 1.49-1.46 1.8-.27.31-.54.34-1 .11-.46-.23-1.94-.71-3.7-2.27-1.37-1.22-2.29-2.72-2.56-3.18-.27-.46-.03-.71.2-.94.21-.21.46-.54.69-.8.23-.27.31-.46.46-.77.15-.31.08-.57-.04-.8-.11-.23-1.03-2.49-1.41-3.41-.37-.89-.75-.77-1.03-.78h-.88c-.31 0-.8.11-1.22.57-.42.46-1.61 1.57-1.61 3.84 0 2.26 1.65 4.45 1.88 4.75.23.31 3.25 4.96 7.88 6.96 1.1.47 1.96.76 2.63.97 1.11.35 2.11.3 2.91.18.89-.13 2.72-1.11 3.1-2.18.38-1.07.38-1.99.27-2.18-.11-.19-.42-.31-.88-.54z"/>
+    <path d="M16.04 3.2c-7.05 0-12.78 5.73-12.78 12.78 0 2.25.59 4.45 1.71 6.38L3.2 28.8l6.6-1.73a12.72 12.72 0 0 0 6.23 1.59h.01c7.05 0 12.78-5.73 12.78-12.78S23.09 3.2 16.04 3.2zm0 23.3h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.92 1.03 1.05-3.82-.25-.39a10.6 10.6 0 1 1 8.92 4.89z"/>
+  </svg>
+</span>
+          اطلب الآن</a>
       </div>
-
     </div>
-
   </header>
-
 
   <main class="page">
 
-
-    <!-- ======================================
-         VISUAL CARDS
-    ======================================= -->
-
-    <section class="experience-grid">
-
-      <article class="experience-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85"
-          alt="Fresh bakery"
-        >
-
-        <div class="experience-content">
-
-          <div class="experience-label">
-            FRESHLY BAKED
-          </div>
-
-          <div class="experience-title">
-            من الفرن مباشرة
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="experience-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
-          alt="Coffee"
-        >
-
-        <div class="experience-content">
-
-          <div class="experience-label">
-            CAMPUS COFFEE
-          </div>
-
-          <div class="experience-title">
-            وقت القهوة ☕
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="experience-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=85"
-          alt="Cold drinks"
-        >
-
-        <div class="experience-content">
-
-          <div class="experience-label">
-            REFRESH
-          </div>
-
-          <div class="experience-title">
-            مشروبك المفضل
-          </div>
-
-        </div>
-
-      </article>
-
-    </section>
-
-
-    <!-- ======================================
-         SEARCH + FILTER
-    ======================================= -->
-
-    <section
-      class="menu-tools"
-      id="menu"
-    >
-
-      <div class="search">
-
-        <span class="search-icon">
-          🔍
-        </span>
-
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="شو عبالك اليوم؟ ابحث عن صنف..."
-        >
-
+    <!-- VISUAL CARDS -->
+<!-- SEARCH & CATEGORIES -->
+    <section class="menu-tools" id="menu">
+      <div class="search" dir="rtl">
+        <span>⌕</span>
+        <input id="searchInput" type="text" placeholder="ابحث عن صنف...">
       </div>
 
-
-      <div class="chips">
-
-        <button
-          class="chip active"
-          data-category="all"
-        >
-          الكل
-        </button>
-
-        <button
-          class="chip"
-          data-category="zaatar"
-        >
-          🌿 زعتر
-        </button>
-
-        <button
-          class="chip"
-          data-category="cheese"
-        >
-          🧀 جبنة
-        </button>
-
-        <button
-          class="chip"
-          data-category="labneh"
-        >
-          🥛 لبنة وقريشة
-        </button>
-
-        <button
-          class="chip"
-          data-category="meat"
-        >
-          🥩 لحمة
-        </button>
-
-      </div>
-
+      <div class="category-strip" id="categoryStrip"></div>
     </section>
 
-
-    <!-- ======================================
-         TITLE
-    ======================================= -->
-
-    <section class="menu-heading">
-
+    <!-- MENU HEAD -->
+    <section class="section-head">
       <div>
+        <small>JINAN CAMPUS CAFÉ</small>
+        <h2 id="currentTitle">كل الأصناف</h2>
+        <p id="currentSubtitle">اختر القسم أو ابحث عن الصنف الذي تريده.</p>
+      </div>
 
-        <div class="menu-heading-small">
-          OUR MENU
-        </div>
+      <div class="result-count" id="resultCount">0 صنف</div>
+    </section>
 
-        <h2>
-          المناقيش
-        </h2>
-
-        <p>
-          عادية • عجين أسمر • عالصاج
+    <!-- CATEGORY FEATURE -->
+    <section class="feature" id="feature">
+      <div class="feature-copy">
+        <small id="featureLabel">CAMPUS FAVORITES</small>
+        <h3 id="featureTitle">منيو متنوّعة ليومك في الجامعة</h3>
+        <p id="featureText">
+          اختار وجبتك أو مشروبك بسرعة، والأسعار كلها بالليرة اللبنانية.
         </p>
-
       </div>
+    </section>
 
-      <div
-        class="count"
-        id="itemCount"
-      >
-        21 صنف
-      </div>
+    <!-- MENU GRID -->
+    <section class="menu-grid" id="menuGrid"></section>
+
+    <section class="empty" id="emptyState">
+      <div style="font-size:36px;margin-bottom:10px">🔎</div>
+      <strong>ما لقينا صنف مطابق</strong>
+      <div style="margin-top:5px">جرّب كلمة تانية أو اختار قسم مختلف.</div>
+    </section>
+
+    <!-- قريبًا -->
+    <section class="coming-grid" id="coming">
+
+      <article class="coming-card">
+<div class="coming-copy">
+          <span class="coming-badge">قريبًا</span>
+          <h3>الباغيت</h3>
+          <p>
+            قسم باغيت جديد قادم إلى Jinan Campus Café.
+            سندويشات باغيت طازجة وخيارات مناسبة للجامعة.
+          </p>
+          <div class="coming-tags">
+            <span>🥖 Baguette</span>
+            <span>Fresh Sandwiches</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="coming-card">
+<div class="coming-copy">
+          <span class="coming-badge">قريبًا</span>
+          <h3>الحلويات</h3>
+          <p>
+            تشكيلة حلويات خفيفة قادمة قريبًا لتكمّل قهوتك واستراحتك.
+          </p>
+          <div class="coming-tags">
+            <span>دوناتس</span>
+            <span>إكلير</span>
+            <span>تارت أناناس</span>
+          </div>
+        </div>
+      </article>
 
     </section>
 
-
-    <!-- ======================================
-         FEATURE
-    ======================================= -->
-
-    <section class="feature-banner">
-
-      <div class="feature-banner-content">
-
-        <div class="mini">
-          CAMPUS FAVORITES
-        </div>
-
-        <h3>
-          سخنة، طازجة، وعالطلب 🔥
-        </h3>
-
-        <p>
-          اختار من تشكيلة المناقيش وخيارات العجين
-          واستمتع بترويقة سريعة بين المحاضرات.
-        </p>
-
+    <!-- ORDER -->
+    <section class="order-section">
+      <div class="order-copy">
+        <small>اطلب الآن</small>
+        <h3>شو عبالك اليوم؟</h3>
+        <p>ابعثلنا طلبك عالواتساب.</p>
       </div>
 
-    </section>
-
-
-    <!-- ======================================
-         MENU ITEMS
-    ======================================= -->
-
-    <section
-      class="menu-grid"
-      id="menuGrid"
-    ></section>
-
-
-    <!-- ======================================
-         NO RESULTS
-    ======================================= -->
-
-    <section
-      class="no-results"
-      id="noResults"
-    >
-
-      <div class="emoji">
-        🔎
-      </div>
-
-      <strong>
-        ما لقينا هالصنف
-      </strong>
-
-      <div style="margin-top:5px;">
-        جرّب كلمة تانية أو اختار قسم مختلف.
-      </div>
-
-    </section>
-
-
-    <!-- ======================================
-         DOUGH NOTE
-    ======================================= -->
-
-    <section class="note">
-
-      <div class="note-icon">
-        🫓
-      </div>
-
-      <div>
-
-        <strong>
-          خيارات العجين
-        </strong>
-
-        <p>
-          المناقيش متوفرة بالعجين العادي،
-          العجين الأسمر، وعالصاج.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ======================================
-         COFFEE / DRINKS TEASER
-    ======================================= -->
-
-    <section
-      class="drinks-section"
-      id="cafe"
-    >
-
-      <div class="drink-photo">
-
-        <div class="drink-photo-text">
-
-          <small>
-            A GOOD BREAK
-          </small>
-
-          <h3>
-            Coffee & Campus
-          </h3>
-
-        </div>
-
-      </div>
-
-
-      <div class="coming-panel">
-
-        <div class="coming-tag">
-          JINAN CAMPUS CAFÉ
-        </div>
-
-        <h3>
-          والـMenu بعدها عم تكبر...
-        </h3>
-
-        <p>
-          قريبًا منضيف بنفس الصفحة أقسام المشروبات،
-          القهوة، البيتزا، الساندويش والحلويات
-          بنفس الهوية والتصميم.
-        </p>
-
-        <div class="coming-items">
-
-          <span class="coming-item">
-            ☕ Coffee
-          </span>
-
-          <span class="coming-item">
-            🥤 Drinks
-          </span>
-
-          <span class="coming-item">
-            🍕 Pizza
-          </span>
-
-          <span class="coming-item">
-            🥪 Sandwiches
-          </span>
-
-          <span class="coming-item">
-            🍰 Desserts
-          </span>
-
-        </div>
-
-      </div>
-
+      <a href="https://wa.me/96181474120" target="_blank" rel="noopener" class="phone-btn">
+        <small>اطلب الآن</small>
+        <strong>81 474 120</strong>
+      </a>
     </section>
 
   </main>
 
-
-  <!-- ======================================
-       FOOTER
-  ======================================= -->
-
   <footer>
-
     <div class="footer-inner">
-
       <div>
-
-        <div class="footer-brand">
-          JINAN CAMPUS
-          <span>CAFÉ</span>
+        <div class="footer-title">
+          JINAN CAMPUS <span>CAFÉ</span>
         </div>
-
-        <div class="footer-text">
-          Your campus. Your break. Your café.
+        <div class="footer-sub">
+          Jinan University • Tripoli, Lebanon
         </div>
-
       </div>
 
-      <div class="footer-campus">
-        Al Jinan University<br>
-        Tripoli • Lebanon
+      <div class="footer-phone">
+        ORDER: 81 474 120
       </div>
-
     </div>
 
     <div class="copyright">
       © 2026 Jinan Campus Café
     </div>
-
   </footer>
 
-
   <script>
-
-    /* ======================================
-       MENU DATA
-    ======================================= */
-
-    const menuItems = [
-
-      {
-        name:"زعتر",
-        price:50000,
-        category:"zaatar",
-        icon:"🌿",
-        label:"زعتر"
+    const menuData = {
+      all: {
+        title: "كل الأصناف",
+        subtitle: "كل الأصناف المتوفرة حاليًا في Jinan Campus Café.",
+        feature: {
+          label: "CAMPUS FAVORITES",
+          title: "All your campus favorites in one place",
+          text: "From freshly baked items to pizza, pasta, coffee, and cold drinks."
+        }
       },
 
-      {
-        name:"زعتر حلبي",
-        price:50000,
-        category:"zaatar",
-        icon:"🌿",
-        label:"زعتر"
+      regular: {
+        title: "مناقيش عادية",
+        subtitle: "مناقيش طازجة بالنكهات الكلاسيكية.",
+        icon: "🫓",
+        feature: {
+          label: "FRESH FROM THE OVEN",
+          title: "طازجة من الفرن",
+          text: "اختر نكهتك المفضلة من الزعتر والجبنة واللحمة."
+        }
       },
 
-      {
-        name:"زعتر مشروحة",
-        price:70000,
-        category:"zaatar",
-        icon:"🌿",
-        label:"زعتر"
+      whole: {
+        title: "مناقيش أسمر",
+        subtitle: "مناقيش بعجينة أسمر.",
+        icon: "🌾",
+        feature: {
+          label: "مناقيش أسمر",
+          title: "Whole wheat, same great taste",
+          text: "اختر الحشوة المفضلة مع عجينة الأسمر."
+        }
       },
 
-      {
-        name:"زعتر خضار",
-        price:90000,
-        category:"zaatar",
-        icon:"🥬",
-        label:"زعتر"
+      saj: {
+        title: "SAJ",
+        subtitle: "مناقيش عالصاج بعجينة القمحة الكاملة.",
+        icon: "🫓",
+        feature: {
+          label: "صاج قمحة كاملة",
+          title: "خفيفة، ساخنة، وعالصاج",
+          text: "خيارات مالحة وحلوة ضمن قائمة الصاج."
+        }
       },
 
-      {
-        name:"زعتر وجبنة",
-        price:150000,
-        category:"zaatar",
-        icon:"🧀",
-        label:"زعتر وجبنة"
+      bakery: {
+        title: "مخبوزات ومعجنات",
+        subtitle: "Fresh bakery picks for your campus day.",
+        icon: "🥐",
+        feature: {
+          label: "كعك ومخبوزات",
+          title: "للصبح وبين المحاضرات",
+          text: "كرواسون، كعك، رقاقات ومخبوزات طازجة."
+        }
       },
 
-      {
-        name:"جبنة",
-        price:150000,
-        category:"cheese",
-        icon:"🧀",
-        label:"جبنة"
+      pizza: {
+        title: "بيتزا",
+        subtitle: "بيتزا ساخنة بعدة نكهات.",
+        icon: "🍕",
+        feature: {
+          label: "بيتزا",
+          title: "بيتزا ساخنة عالطلب",
+          text: "مارغريتا، خضار، بيبروني، فاهيتا والمزيد."
+        }
       },
 
-      {
-        name:"جبنة اكسترا",
-        price:200000,
-        category:"cheese",
-        icon:"🧀",
-        label:"جبنة"
+      pasta: {
+        title: "باستا",
+        subtitle: "خيارات سريعة ومشبعة.",
+        icon: "🍝",
+        feature: {
+          label: "باستا",
+          title: "وجبة سريعة ومشبعة",
+          text: "فيتوتشيني بأحجام مختلفة وخيارات سريعة لوقت الغداء."
+        }
       },
 
-      {
-        name:"جبنة خضار",
-        price:200000,
-        category:"cheese",
-        icon:"🥬",
-        label:"جبنة"
+      cold: {
+        title: "مشروبات باردة",
+        subtitle: "مشروبات باردة ومنعشة.",
+        icon: "🥤",
+        feature: {
+          label: "مشروبات باردة",
+          title: "شي بارد مع وجبتك",
+          text: "مياه، عصائر، مشروبات غازية، آيس كوفي وميلك شيك."
+        }
       },
 
-      {
-        name:"جبنة سجق",
-        price:250000,
-        category:"cheese",
-        icon:"🌭",
-        label:"جبنة"
-      },
-
-      {
-        name:"جبنة حبش",
-        price:250000,
-        category:"cheese",
-        icon:"🥪",
-        label:"جبنة"
-      },
-
-      {
-        name:"جبنة مرتديلا",
-        price:200000,
-        category:"cheese",
-        icon:"🥪",
-        label:"جبنة"
-      },
-
-      {
-        name:"جبنة بيبروني",
-        price:250000,
-        category:"cheese",
-        icon:"🍕",
-        label:"جبنة"
-      },
-
-      {
-        name:"جبنة فور تشيز",
-        price:250000,
-        category:"cheese",
-        icon:"🧀",
-        label:"Four Cheese"
-      },
-
-      {
-        name:"جبنة وبرينغلز",
-        price:200000,
-        category:"cheese",
-        icon:"🥔",
-        label:"جبنة"
-      },
-
-      {
-        name:"لبنة وخضار",
-        price:150000,
-        category:"labneh",
-        icon:"🥒",
-        label:"لبنة"
-      },
-
-      {
-        name:"لبنة وخضار ومرتديلا",
-        price:200000,
-        category:"labneh",
-        icon:"🥪",
-        label:"لبنة"
-      },
-
-      {
-        name:"قريشة",
-        price:150000,
-        category:"labneh",
-        icon:"🥛",
-        label:"قريشة"
-      },
-
-      {
-        name:"قريشة وجبنة",
-        price:200000,
-        category:"labneh",
-        icon:"🧀",
-        label:"قريشة"
-      },
-
-      {
-        name:"تركية مع جبنة",
-        price:150000,
-        category:"cheese",
-        icon:"🫓",
-        label:"Special"
-      },
-
-      {
-        name:"لحمة",
-        price:250000,
-        category:"meat",
-        icon:"🥩",
-        label:"لحمة"
-      },
-
-      {
-        name:"لحمة مع جبنة",
-        price:300000,
-        category:"meat",
-        icon:"🔥",
-        label:"لحمة وجبنة"
+      hot: {
+        title: "مشروبات ساخنة",
+        subtitle: "قهوة ومشروبات دافئة.",
+        icon: "☕",
+        feature: {
+          label: "مشروبات ساخنة",
+          title: "استراحة قهوة بين المحاضرات",
+          text: "إسبريسو، نيسكافيه، كابتشينو، هوت تشوكلت وشاي."
+        }
       }
+    };
 
+    const manakish = [
+      ["زعتر بلدي",50000,"🌿"],
+      ["زعتر حلبي",50000,"🌿"],
+      ["زعتر مشروحة",70000,"🌿"],
+      ["زعتر خضار",90000,"🥬"],
+      ["زعتر وجبنة",150000,"🧀"],
+      ["جبنة",150000,"🧀"],
+      ["جبنة اكسترا",200000,"🧀"],
+      ["جبنة خضار",200000,"🥬"],
+      ["جبنة سجق",250000,"🌭"],
+      ["جبنة حبش",250000,"🥪"],
+      ["جبنة مرتديلا",200000,"🥪"],
+      ["جبنة بيبروني",250000,"🍕"],
+      ["جبنة فور تشيز",250000,"🧀"],
+      ["جبنة وبرينغلز",200000,"🥔"],
+      ["لبنة وخضار",150000,"🥒"],
+      ["لبنة وخضار ومرتديلا",200000,"🥪"],
+      ["قريشة",150000,"🥛"],
+      ["قريشة وجبنة",200000,"🧀"],
+      ["تركية مع جبنة",150000,"🫓"],
+      ["لحمة",250000,"🥩"],
+      ["لحمة مع جبنة",300000,"🔥"]
     ];
 
+    const items = [];
 
-    let currentCategory = "all";
+    ["regular","whole"].forEach(category => {
+      manakish.forEach(([name,price,icon]) => {
+        items.push({name,price,icon,category});
+      });
+    });
 
+    manakish.forEach(([name,price,icon]) => {
+      items.push({name,price,icon,category:"saj"});
+    });
 
-    const grid =
-      document.getElementById("menuGrid");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const itemCount =
-      document.getElementById("itemCount");
-
-    const noResults =
-      document.getElementById("noResults");
-
-
-    /* ======================================
-       PRICE
-    ======================================= */
-
-    function formatPrice(price){
-
-      return new Intl.NumberFormat(
-        "en-US"
-      ).format(price);
-
-    }
-
-
-    /* ======================================
-       RENDER
-    ======================================= */
-
-    function renderMenu(){
-
-      const search =
-        searchInput
-          .value
-          .trim()
-          .toLowerCase();
-
-
-      const filtered =
-        menuItems.filter(item => {
-
-          const categoryMatches =
-            currentCategory === "all" ||
-            item.category === currentCategory;
-
-
-          const searchMatches =
-            !search ||
-            item.name
-              .toLowerCase()
-              .includes(search);
-
-
-          return (
-            categoryMatches &&
-            searchMatches
-          );
-
-        });
-
-
-      grid.innerHTML = "";
-
-
-      filtered.forEach(
-        (item,index) => {
-
-          const card =
-            document.createElement("article");
-
-
-          card.className =
-            "menu-item";
-
-
-          card.style.animationDelay =
-            `${index * 35}ms`;
-
-
-          card.innerHTML = `
-
-            <div class="food-info">
-
-              <div class="food-icon">
-                ${item.icon}
-              </div>
-
-              <div>
-
-                <div class="food-name">
-                  ${item.name}
-                </div>
-
-                <div class="food-category">
-                  ${item.label}
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="price">
-
-              ${formatPrice(item.price)}
-
-              <small>
-                ليرة لبنانية
-              </small>
-
-            </div>
-
-          `;
-
-
-          grid.appendChild(card);
-
-        }
-      );
-
-
-      itemCount.textContent =
-        `${filtered.length} صنف`;
-
-
-      noResults.style.display =
-        filtered.length
-          ? "none"
-          : "block";
-
-    }
-
-
-    /* ======================================
-       SEARCH
-    ======================================= */
-
-    searchInput.addEventListener(
-      "input",
-      renderMenu
+    items.push(
+      {name:"شوكولا",price:150000,icon:"🍫",category:"saj"},
+      {name:"شوكولا وموز (نسلة اختياري)",price:200000,icon:"🍌",category:"saj"}
     );
 
+    [
+      ["اوزي بالأرز واللحم والدجاج",200000,"🍚"],
+      ["لحم بعجين مدور",100000,"🥩"],
+      ["لحم بعجين حدف",130000,"🥩"],
+      ["كروسان فاهيتا",150000,"🥐"],
+      ["كروسان زعتر جبنة شوكولا",100000,"🥐"],
+      ["شعيبيات بسلق",70000,"🥬"],
+      ["كعكة بجبنة مدورة",150000,"🥯"],
+      ["كعكة اكسترا مربعة",200000,"🥯"],
+      ["كعكة مشبك",100000,"🥨"],
+      ["رقاقات جبنة وفاهيتا سواريه",40000,"🧀"],
+      ["كرواسون 7 حبوب (زعتر جبنة شوكولا)",130000,"🥐"]
+    ].forEach(([name,price,icon]) =>
+      items.push({name,price,icon,category:"bakery"})
+    );
 
-    /* ======================================
-       FILTER CHIPS
-    ======================================= */
+    [
+      ["مرغريتا",300000,"🍕"],
+      ["خضار",350000,"🍕"],
+      ["سجق",450000,"🍕"],
+      ["بيبروني",450000,"🍕"],
+      ["مرتديلا",400000,"🍕"],
+      ["حبش",450000,"🍕"],
+      ["فاهيتا",450000,"🍕"]
+    ].forEach(([name,price,icon]) =>
+      items.push({name,price,icon,category:"pizza"})
+    );
 
-    document
-      .querySelectorAll(".chip")
-      .forEach(button => {
+    [
+      ["اوزي بالأرز واللحم والدجاج",200000,"🍚"],
+      ["فيتو تشيني صغيرة",300000,"🍝"],
+      ["فيتو تشيني وسط",500000,"🍝"],
+      ["اندومي",100000,"🍜"]
+    ].forEach(([name,price,icon]) =>
+      items.push({name,price,icon,category:"pasta"})
+    );
 
-        button.addEventListener(
-          "click",
-          () => {
+    [
+      ["كينزا كبير",80000,"🥤"],
+      ["كينزا وسط",50000,"🥤"],
+      ["ريندو تنك",50000,"🥤"],
+      ["مستر جوسي",30000,"🧃"],
+      ["توب جوس",30000,"🧃"],
+      ["مياه صغير",30000,"💧"],
+      ["مياه كبير",50000,"💧"],
+      ["مياه غازية تنورين",100000,"🫧"],
+      ["ميلك شيك (دانواي)",80000,"🥛"],
+      ["اكسترا صغير",70000,"🥤"],
+      ["آيس كوفي لونا",120000,"🧋"],
+      ["عيران كلاس",80000,"🥛"]
+    ].forEach(([name,price,icon]) =>
+      items.push({name,price,icon,category:"cold"})
+    );
 
-            document
-              .querySelectorAll(".chip")
-              .forEach(
-                chip =>
-                  chip.classList.remove(
-                    "active"
-                  )
-              );
+    [
+      ["قهوة اسبرسو (اصلان)",80000,"☕"],
+      ["نيسكافيه",80000,"☕"],
+      ["كابتشينو",80000,"☕"],
+      ["هوت تشاكلت",80000,"🍫"],
+      ["شاي",40000,"🫖"],
+      ["زهورات (متنوعة)",40000,"🌿"],
+      ["زنجبيل بالعسل",50000,"🍯"]
+    ].forEach(([name,price,icon]) =>
+      items.push({name,price,icon,category:"hot"})
+    );
 
+    const categories = [
+      ["all","الكل"],
+      ["regular","مناقيش عادية"],
+      ["whole","مناقيش أسمر"],
+      ["saj","SAJ"],
+      ["bakery","مخبوزات ومعجنات"],
+      ["pizza","بيتزا"],
+      ["pasta","باستا"],
+      ["cold","مشروبات باردة"],
+      ["hot","مشروبات ساخنة"]
+    ];
 
-            button.classList.add(
-              "active"
-            );
+    let activeCategory = "all";
 
+    const categoryStrip = document.getElementById("categoryStrip");
+    const menuGrid = document.getElementById("menuGrid");
+    const searchInput = document.getElementById("searchInput");
+    const emptyState = document.getElementById("emptyState");
+    const resultCount = document.getElementById("resultCount");
 
-            currentCategory =
-              button.dataset.category;
+    const currentTitle = document.getElementById("currentTitle");
+    const currentSubtitle = document.getElementById("currentSubtitle");
 
+    const featureLabel = document.getElementById("featureLabel");
+    const featureTitle = document.getElementById("featureTitle");
+    const featureText = document.getElementById("featureText");
 
-            renderMenu();
+    function buildCategories(){
+      categories.forEach(([id,label],index) => {
+        const btn = document.createElement("button");
+        btn.className = "category-btn" + (index === 0 ? " active" : "");
+        btn.dataset.category = id;
+        btn.textContent = label;
 
-          }
-        );
+        btn.addEventListener("click",() => {
+          document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeCategory = id;
+          updateSectionCopy();
+          render();
+        });
 
+        categoryStrip.appendChild(btn);
       });
 
+      const comingBtn = document.createElement("button");
+      comingBtn.className = "category-btn";
+      comingBtn.innerHTML = 'BAGUETTE & الحلويات <span class="soon-dot">قريبًا</span>';
+      comingBtn.addEventListener("click",() => {
+        document.getElementById("coming").scrollIntoView({behavior:"smooth",block:"center"});
+      });
+      categoryStrip.appendChild(comingBtn);
+    }
 
-    /* ======================================
-       INITIAL
-    ======================================= */
+    function updateSectionCopy(){
+      const data = menuData[activeCategory] || menuData.all;
 
-    renderMenu();
+      currentTitle.textContent = data.title;
+      currentSubtitle.textContent = data.subtitle;
 
+      featureLabel.textContent = data.feature.label;
+      featureTitle.textContent = data.feature.title;
+      featureText.textContent = data.feature.text;
+    }
+
+    function formatPrice(price){
+      return new Intl.NumberFormat("en-US").format(price);
+    }
+
+    function render(){
+      const search = searchInput.value.trim().toLowerCase();
+
+      const filtered = items.filter(item => {
+        const categoryMatch =
+          activeCategory === "all" ||
+          item.category === activeCategory;
+
+        const searchMatch =
+          !search ||
+          item.name.toLowerCase().includes(search);
+
+        return categoryMatch && searchMatch;
+      });
+
+      menuGrid.innerHTML = "";
+
+      filtered.forEach((item,index) => {
+        const card = document.createElement("article");
+        card.className = "menu-card";
+        card.style.animationDelay = `${Math.min(index * 22,220)}ms`;
+
+        card.innerHTML = `
+          <div class="item-main">
+            <div class="item-icon">${item.icon}</div>
+
+            <div>
+              <div class="item-name">${item.name}</div>
+              <div class="item-sub">${menuData[item.category].title}</div>
+            </div>
+          </div>
+
+          <div class="price">${formatPrice(item.price)} <small>ل.ل.</small></div>
+        `;
+
+        menuGrid.appendChild(card);
+      });
+
+      resultCount.textContent = `${filtered.length} صنف`;
+
+      emptyState.style.display =
+        filtered.length ? "none" : "block";
+    }
+
+    searchInput.addEventListener("input",render);
+
+    buildCategories();
+    updateSectionCopy();
+    render();
   </script>
-
 </body>
 </html>
