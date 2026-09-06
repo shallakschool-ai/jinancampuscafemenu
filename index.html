@@ -1,490 +1,1436 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jinan Campus Café | Menu</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap');
-
-:root{
-  --green:#087333;
-  --green-dark:#05552a;
-  --green-light:#eaf5ee;
-  --cream:#faf9f5;
-  --white:#ffffff;
-  --text:#18221c;
-  --muted:#6d766f;
-  --border:#e2e8e4;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:"Tajawal",Arial,sans-serif;
-  background:var(--cream);
-  color:var(--text);
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  background:
-    linear-gradient(135deg,#05552a,#087333);
-  color:white;
-  padding:55px 20px 75px;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:50%;
-  top:-170px;
-  left:-80px;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  bottom:-150px;
-  right:-50px;
-}
-
-.hero-inner{
-  max-width:1100px;
-  margin:auto;
-  position:relative;
-  z-index:2;
-}
-
-.brand-small{
-  font-size:13px;
-  letter-spacing:3px;
-  opacity:.8;
-  margin-bottom:10px;
-  direction:ltr;
-  text-align:right;
-}
-
-.hero h1{
-  font-size:42px;
-  font-weight:800;
-  line-height:1.2;
-}
-
-.hero h1 span{
-  font-weight:400;
-  opacity:.9;
-}
-
-.hero p{
-  margin-top:12px;
-  font-size:17px;
-  opacity:.85;
-}
-
-.hero-badge{
-  display:inline-flex;
-  margin-top:24px;
-  padding:9px 15px;
-  background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:50px;
-  font-size:13px;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container{
-  max-width:1100px;
-  margin:-32px auto 60px;
-  padding:0 20px;
-  position:relative;
-  z-index:5;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.search-box{
-  background:white;
-  border-radius:16px;
-  padding:13px 18px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  box-shadow:0 8px 30px rgba(20,50,30,.08);
-  border:1px solid var(--border);
-}
-
-.search-icon{
-  font-size:19px;
-}
-
-.search-box input{
-  border:0;
-  outline:0;
-  width:100%;
-  font-family:inherit;
-  font-size:15px;
-  color:var(--text);
-  background:transparent;
-}
-
-.search-box input::placeholder{
-  color:#9aa19c;
-}
-
-/* =========================
-   CATEGORY
-========================= */
-
-.category-nav{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  padding:20px 0 10px;
-  scrollbar-width:none;
-}
-
-.category-nav::-webkit-scrollbar{
-  display:none;
-}
-
-.category-btn{
-  border:0;
-  white-space:nowrap;
-  padding:10px 18px;
-  border-radius:30px;
-  background:white;
-  color:#536058;
-  border:1px solid var(--border);
-  font-family:inherit;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.category-btn.active{
-  background:var(--green);
-  color:white;
-  border-color:var(--green);
-}
-
-/* =========================
-   SECTION HEADER
-========================= */
-
-.section-header{
-  margin:28px 0 18px;
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.section-title{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.section-icon{
-  width:46px;
-  height:46px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:var(--green-light);
-  border-radius:13px;
-  font-size:23px;
-}
-
-.section-header h2{
-  font-size:23px;
-  color:var(--green-dark);
-}
-
-.section-header p{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:3px;
-}
-
-.item-count{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* =========================
-   MENU GRID
-========================= */
-
-.menu-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.menu-item{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:17px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  transition:.2s ease;
-}
-
-.menu-item:hover{
-  transform:translateY(-2px);
-  border-color:#bcd8c6;
-  box-shadow:0 7px 20px rgba(20,60,35,.06);
-}
-
-.item-info{
-  min-width:0;
-}
-
-.item-name{
-  font-weight:700;
-  font-size:16px;
-  line-height:1.5;
-}
-
-.item-tag{
-  font-size:11px;
-  color:var(--muted);
-  margin-top:3px;
-}
-
-.price{
-  flex-shrink:0;
-  background:var(--green-light);
-  color:var(--green-dark);
-  padding:8px 11px;
-  border-radius:9px;
-  font-size:14px;
-  font-weight:800;
-  direction:rtl;
-  white-space:nowrap;
-}
-
-/* =========================
-   NOTE
-========================= */
-
-.note{
-  margin-top:25px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.8;
-}
-
-.note strong{
-  color:var(--green);
-}
-
-/* =========================
-   EMPTY SEARCH
-========================= */
-
-.no-results{
-  display:none;
-  text-align:center;
-  padding:50px 20px;
-  color:var(--muted);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#10261a;
-  color:white;
-  text-align:center;
-  padding:35px 20px;
-}
-
-.footer-brand{
-  font-size:20px;
-  font-weight:800;
-  direction:ltr;
-}
-
-.footer-sub{
-  font-size:13px;
-  opacity:.65;
-  margin-top:7px;
-}
-
-.copyright{
-  margin-top:20px;
-  padding-top:18px;
-  border-top:1px solid rgba(255,255,255,.1);
-  font-size:11px;
-  opacity:.45;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-  .hero{
-    padding:42px 18px 65px;
-  }
-
-  .hero h1{
-    font-size:31px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .container{
-    padding:0 13px;
-  }
-
-  .menu-grid{
-    grid-template-columns:1fr;
-    gap:9px;
-  }
-
-  .menu-item{
-    padding:15px;
-  }
-
-  .item-name{
-    font-size:15px;
-  }
-
-  .price{
-    font-size:13px;
-  }
-
-  .section-header h2{
-    font-size:20px;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jinan Campus Café | Menu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#0b6b3a;
+      --green-dark:#064529;
+      --green-deep:#032d1c;
+      --green-soft:#e8f3ec;
+
+      --cream:#f7f2e9;
+      --cream-2:#fcfaf6;
+
+      --brown:#8a603b;
+      --gold:#d6a85b;
+
+      --text:#18221c;
+      --muted:#718078;
+      --white:#ffffff;
+
+      --border:rgba(20,70,45,.10);
+
+      --shadow:
+        0 18px 50px rgba(28,52,38,.10);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Tajawal",Arial,sans-serif;
+      background:
+        linear-gradient(
+          180deg,
+          #f6f1e8 0,
+          #fcfaf7 520px,
+          #f8faf8 100%
+        );
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input{
+      font-family:inherit;
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero{
+      min-height:620px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3,34,20,.96) 0%,
+          rgba(5,57,32,.91) 37%,
+          rgba(5,57,32,.54) 65%,
+          rgba(5,57,32,.20) 100%
+        ),
+        url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:150px;
+
+      background:
+        linear-gradient(
+          to top,
+          var(--cream),
+          transparent
+        );
+    }
+
+
+    .hero-glow{
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      background:rgba(214,168,91,.16);
+      filter:blur(90px);
+      left:15%;
+      bottom:-170px;
+    }
+
+
+    .hero-content{
+      width:min(1180px,92%);
+      margin:auto;
+      position:relative;
+      z-index:3;
+      color:white;
+      padding:80px 0 120px;
+    }
+
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:2.5px;
+
+      direction:ltr;
+      justify-content:flex-end;
+
+      opacity:.85;
+      margin-bottom:18px;
+    }
+
+
+    .eyebrow::before{
+      content:"";
+      width:42px;
+      height:1px;
+      background:var(--gold);
+    }
+
+
+    .hero h1{
+      font-size:clamp(42px,7vw,82px);
+      line-height:.96;
+      max-width:760px;
+      font-weight:900;
+      letter-spacing:-2px;
+    }
+
+
+    .hero h1 .light{
+      display:block;
+      font-weight:400;
+      color:#eed9ad;
+      margin-top:8px;
+    }
+
+
+    .hero-description{
+      margin-top:25px;
+      max-width:560px;
+
+      font-size:18px;
+      line-height:1.8;
+
+      color:rgba(255,255,255,.83);
+    }
+
+
+    .hero-actions{
+      margin-top:32px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+
+    .hero-button{
+      height:50px;
+      padding:0 23px;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+
+      border-radius:50px;
+
+      background:var(--white);
+      color:var(--green-dark);
+
+      font-size:15px;
+      font-weight:800;
+
+      transition:.25s ease;
+    }
+
+
+    .hero-button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 25px rgba(0,0,0,.18);
+    }
+
+
+    .hero-button.secondary{
+      background:rgba(255,255,255,.10);
+      color:white;
+      border:1px solid rgba(255,255,255,.23);
+      backdrop-filter:blur(10px);
+    }
+
+
+    /* ========================================
+       PAGE
+    ======================================== */
+
+    .page{
+      width:min(1180px,92%);
+      margin:-65px auto 70px;
+      position:relative;
+      z-index:10;
+    }
+
+
+    /* ========================================
+       EXPERIENCE CARDS
+    ======================================== */
+
+    .experience-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:16px;
+      margin-bottom:35px;
+    }
+
+
+    .experience-card{
+      min-height:235px;
+      border-radius:26px;
+      overflow:hidden;
+      position:relative;
+
+      box-shadow:var(--shadow);
+      background:#ddd;
+
+      isolation:isolate;
+    }
+
+
+    .experience-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+
+      position:absolute;
+      inset:0;
+
+      transition:transform .6s ease;
+    }
+
+
+    .experience-card:hover img{
+      transform:scale(1.06);
+    }
+
+
+    .experience-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(3,30,18,.88),
+          rgba(3,30,18,.08) 70%
+        );
+    }
+
+
+    .experience-content{
+      position:absolute;
+      z-index:2;
+      bottom:0;
+      right:0;
+      left:0;
+
+      padding:23px;
+      color:white;
+    }
+
+
+    .experience-label{
+      font-size:12px;
+      color:#f0d9a9;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+
+    .experience-title{
+      font-size:21px;
+      font-weight:800;
+    }
+
+
+    /* ========================================
+       SEARCH / NAV
+    ======================================== */
+
+    .menu-tools{
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--border);
+      border-radius:22px;
+
+      padding:14px;
+
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      box-shadow:
+        0 12px 35px rgba(24,50,34,.07);
+
+      backdrop-filter:blur(16px);
+
+      position:sticky;
+      top:12px;
+      z-index:50;
+    }
+
+
+    .search{
+      flex:1;
+      min-width:220px;
+
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      padding:0 16px;
+      height:48px;
+
+      border-radius:15px;
+      background:#f5f7f5;
+      border:1px solid transparent;
+
+      transition:.2s;
+    }
+
+
+    .search:focus-within{
+      background:white;
+      border-color:rgba(11,107,58,.35);
+      box-shadow:
+        0 0 0 4px rgba(11,107,58,.07);
+    }
+
+
+    .search input{
+      flex:1;
+      width:100%;
+      border:0;
+      outline:none;
+      background:transparent;
+      font-size:15px;
+      color:var(--text);
+    }
+
+
+    .search-icon{
+      font-size:17px;
+      opacity:.55;
+    }
+
+
+    .chips{
+      display:flex;
+      gap:7px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+
+    .chips::-webkit-scrollbar{
+      display:none;
+    }
+
+
+    .chip{
+      height:42px;
+      padding:0 17px;
+
+      flex:none;
+
+      border-radius:50px;
+      border:1px solid #e3e9e5;
+      background:white;
+
+      color:#59645e;
+
+      font-size:13px;
+      font-weight:700;
+
+      cursor:pointer;
+      transition:.2s;
+    }
+
+
+    .chip:hover{
+      border-color:#b9d3c3;
+      color:var(--green);
+    }
+
+
+    .chip.active{
+      background:var(--green);
+      color:white;
+      border-color:var(--green);
+      box-shadow:
+        0 7px 20px rgba(11,107,58,.20);
+    }
+
+
+    /* ========================================
+       MENU HEADER
+    ======================================== */
+
+    .menu-heading{
+      margin:52px 0 24px;
+
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+
+    .menu-heading-small{
+      color:var(--brown);
+      font-size:12px;
+      letter-spacing:1px;
+      font-weight:800;
+      margin-bottom:5px;
+    }
+
+
+    .menu-heading h2{
+      font-size:34px;
+      line-height:1.2;
+      color:var(--green-dark);
+    }
+
+
+    .menu-heading p{
+      margin-top:7px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+
+    .count{
+      background:var(--green-soft);
+      color:var(--green);
+
+      border-radius:50px;
+      padding:8px 14px;
+
+      font-size:13px;
+      font-weight:700;
+
+      flex:none;
+    }
+
+
+    /* ========================================
+       FEATURE BANNER
+    ======================================== */
+
+    .feature-banner{
+      min-height:180px;
+
+      margin-bottom:20px;
+      padding:28px 30px;
+
+      border-radius:24px;
+
+      display:flex;
+      align-items:center;
+
+      position:relative;
+      overflow:hidden;
+
+      color:white;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3,54,29,.97),
+          rgba(3,54,29,.84),
+          rgba(3,54,29,.18)
+        ),
+        url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80")
+        center/cover no-repeat;
+    }
+
+
+    .feature-banner-content{
+      max-width:500px;
+      position:relative;
+      z-index:2;
+    }
+
+
+    .feature-banner .mini{
+      color:#f0d9aa;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:7px;
+    }
+
+
+    .feature-banner h3{
+      font-size:25px;
+      margin-bottom:8px;
+    }
+
+
+    .feature-banner p{
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+
+    /* ========================================
+       MENU GRID
+    ======================================== */
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:13px;
+    }
+
+
+    .menu-item{
+      position:relative;
+      overflow:hidden;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+
+      min-height:103px;
+      padding:18px 19px;
+
+      background:rgba(255,255,255,.93);
+
+      border:
+        1px solid rgba(18,76,47,.09);
+
+      border-radius:18px;
+
+      box-shadow:
+        0 5px 18px rgba(28,48,35,.035);
+
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        border .22s ease;
+
+      animation:
+        fadeUp .45s ease both;
+    }
+
+
+    .menu-item::before{
+      content:"";
+      position:absolute;
+      right:0;
+      top:0;
+      bottom:0;
+
+      width:4px;
+
+      background:
+        linear-gradient(
+          var(--green),
+          #60a373
+        );
+
+      opacity:0;
+      transition:.2s;
+    }
+
+
+    .menu-item:hover{
+      transform:translateY(-4px);
+      border-color:rgba(11,107,58,.20);
+
+      box-shadow:
+        0 15px 32px rgba(20,60,35,.09);
+    }
+
+
+    .menu-item:hover::before{
+      opacity:1;
+    }
+
+
+    .food-info{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+
+    .food-icon{
+      width:48px;
+      height:48px;
+      min-width:48px;
+
+      border-radius:15px;
+
+      display:grid;
+      place-items:center;
+
+      font-size:23px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f4eee2,
+          #fff
+        );
+
+      box-shadow:
+        inset 0 0 0 1px rgba(90,65,30,.06);
+    }
+
+
+    .food-name{
+      font-weight:800;
+      font-size:16px;
+      color:#223128;
+    }
+
+
+    .food-category{
+      margin-top:4px;
+      font-size:11px;
+      color:#909b95;
+    }
+
+
+    .price{
+      flex:none;
+
+      min-width:112px;
+
+      text-align:center;
+
+      padding:10px 11px;
+
+      border-radius:13px;
+
+      color:var(--green-dark);
+      background:var(--green-soft);
+
+      font-size:14px;
+      font-weight:900;
+
+      direction:rtl;
+    }
+
+
+    .price small{
+      display:block;
+      margin-top:1px;
+
+      font-size:9px;
+      font-weight:700;
+
+      color:#678474;
+    }
+
+
+    /* ========================================
+       COMING SOON / DRINKS
+    ======================================== */
+
+    .drinks-section{
+      margin-top:55px;
+      display:grid;
+      grid-template-columns:1fr 1.3fr;
+      gap:18px;
+    }
+
+
+    .drink-photo{
+      min-height:340px;
+      border-radius:28px;
+      overflow:hidden;
+
+      position:relative;
+
+      background:
+        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85")
+        center/cover no-repeat;
+
+      box-shadow:var(--shadow);
+    }
+
+
+    .drink-photo::after{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(2,35,20,.85),
+          transparent 65%
+        );
+    }
+
+
+    .drink-photo-text{
+      position:absolute;
+      z-index:2;
+
+      right:25px;
+      bottom:24px;
+
+      color:white;
+    }
+
+
+    .drink-photo-text small{
+      color:#f0d8a3;
+      font-weight:700;
+    }
+
+
+    .drink-photo-text h3{
+      font-size:25px;
+      margin-top:4px;
+    }
+
+
+    .coming-panel{
+      min-height:340px;
+
+      padding:38px;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+
+      border-radius:28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-deep),
+          var(--green)
+        );
+
+      color:white;
+
+      position:relative;
+      overflow:hidden;
+    }
+
+
+    .coming-panel::before{
+      content:"CAFÉ";
+
+      position:absolute;
+      left:-15px;
+      bottom:-28px;
+
+      font-size:115px;
+      font-weight:900;
+
+      color:rgba(255,255,255,.04);
+
+      direction:ltr;
+    }
+
+
+    .coming-tag{
+      width:max-content;
+
+      padding:7px 12px;
+      border-radius:50px;
+
+      background:rgba(255,255,255,.12);
+
+      border:1px solid rgba(255,255,255,.13);
+
+      font-size:11px;
+      font-weight:700;
+
+      margin-bottom:18px;
+    }
+
+
+    .coming-panel h3{
+      font-size:33px;
+      line-height:1.25;
+    }
+
+
+    .coming-panel p{
+      margin-top:13px;
+
+      max-width:470px;
+
+      line-height:1.8;
+      color:rgba(255,255,255,.72);
+    }
+
+
+    .coming-items{
+      margin-top:25px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+
+    .coming-item{
+      padding:8px 12px;
+
+      border-radius:50px;
+
+      background:rgba(255,255,255,.08);
+
+      font-size:12px;
+      color:rgba(255,255,255,.82);
+    }
+
+
+    /* ========================================
+       NOTE
+    ======================================== */
+
+    .note{
+      margin-top:25px;
+
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+
+      padding:19px 21px;
+
+      background:#fffaf0;
+
+      border:
+        1px solid rgba(166,123,57,.15);
+
+      border-radius:17px;
+    }
+
+
+    .note-icon{
+      width:38px;
+      height:38px;
+      min-width:38px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:11px;
+
+      background:#f1e4c9;
+      font-size:18px;
+    }
+
+
+    .note strong{
+      display:block;
+      color:#76502f;
+      margin-bottom:3px;
+    }
+
+
+    .note p{
+      color:#8a7763;
+      line-height:1.7;
+      font-size:13px;
+    }
+
+
+    /* ========================================
+       EMPTY
+    ======================================== */
+
+    .no-results{
+      display:none;
+
+      padding:60px 20px;
+      text-align:center;
+
+      background:white;
+
+      border-radius:22px;
+      border:1px solid var(--border);
+
+      color:var(--muted);
+    }
+
+
+    .no-results .emoji{
+      font-size:38px;
+      margin-bottom:10px;
+    }
+
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer{
+      position:relative;
+      overflow:hidden;
+
+      background:#082b1b;
+      color:white;
+
+      padding:55px 20px 35px;
+    }
+
+
+    .footer-inner{
+      width:min(1180px,92%);
+      margin:auto;
+
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-end;
+    }
+
+
+    .footer-brand{
+      font-size:27px;
+      font-weight:900;
+      direction:ltr;
+    }
+
+
+    .footer-brand span{
+      font-weight:400;
+      color:#d9c297;
+    }
+
+
+    .footer-text{
+      margin-top:6px;
+      font-size:12px;
+      color:rgba(255,255,255,.55);
+    }
+
+
+    .footer-campus{
+      text-align:left;
+      font-size:12px;
+      color:rgba(255,255,255,.55);
+    }
+
+
+    .copyright{
+      width:min(1180px,92%);
+      margin:30px auto 0;
+
+      padding-top:22px;
+
+      border-top:
+        1px solid rgba(255,255,255,.08);
+
+      text-align:center;
+
+      color:rgba(255,255,255,.35);
+      font-size:11px;
+    }
+
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(12px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+
+    /* ========================================
+       TABLET
+    ======================================== */
+
+    @media(max-width:900px){
+
+      .hero{
+        min-height:560px;
+      }
+
+      .experience-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .experience-card:first-child{
+        grid-column:1/-1;
+      }
+
+      .menu-tools{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .chips{
+        width:100%;
+      }
+
+      .drinks-section{
+        grid-template-columns:1fr;
+      }
+
+      .drink-photo,
+      .coming-panel{
+        min-height:290px;
+      }
+
+    }
+
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media(max-width:650px){
+
+      .hero{
+        min-height:570px;
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(3,40,23,.65),
+            rgba(3,40,23,.96)
+          ),
+          url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1100&q=80")
+          center/cover no-repeat;
+      }
+
+
+      .hero-content{
+        text-align:center;
+        padding-top:95px;
+      }
+
+
+      .eyebrow{
+        justify-content:center;
+      }
+
+
+      .hero h1{
+        font-size:48px;
+        margin:auto;
+      }
+
+
+      .hero-description{
+        margin:22px auto 0;
+        font-size:15px;
+      }
+
+
+      .hero-actions{
+        justify-content:center;
+      }
+
+
+      .page{
+        width:94%;
+      }
+
+
+      .experience-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+
+
+      .experience-card{
+        min-height:180px;
+        border-radius:20px;
+      }
+
+
+      .experience-card:first-child{
+        min-height:235px;
+      }
+
+
+      .experience-title{
+        font-size:17px;
+      }
+
+
+      .experience-content{
+        padding:16px;
+      }
+
+
+      .menu-heading{
+        margin-top:38px;
+      }
+
+
+      .menu-heading h2{
+        font-size:27px;
+      }
+
+
+      .menu-heading p{
+        font-size:13px;
+      }
+
+
+      .menu-grid{
+        grid-template-columns:1fr;
+        gap:9px;
+      }
+
+
+      .menu-item{
+        min-height:91px;
+        border-radius:16px;
+        padding:15px;
+      }
+
+
+      .food-icon{
+        width:44px;
+        height:44px;
+        min-width:44px;
+      }
+
+
+      .food-name{
+        font-size:15px;
+      }
+
+
+      .price{
+        min-width:96px;
+        font-size:13px;
+      }
+
+
+      .feature-banner{
+        min-height:205px;
+        padding:23px;
+
+        background-position:center;
+      }
+
+
+      .feature-banner h3{
+        font-size:22px;
+      }
+
+
+      .coming-panel{
+        padding:27px;
+      }
+
+
+      .coming-panel h3{
+        font-size:27px;
+      }
+
+
+      .footer-inner{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+      }
+
+
+      .footer-campus{
+        text-align:center;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-<header class="hero">
+  <!-- ======================================
+       HERO
+  ======================================= -->
 
-  <div class="hero-inner">
+  <header class="hero">
 
-    <div class="brand-small">
-      AL JINAN UNIVERSITY
-    </div>
+    <div class="hero-glow"></div>
 
-    <h1>
-      JINAN CAMPUS
-      <span>CAFÉ</span>
-    </h1>
+    <div class="hero-content">
 
-    <p>
-      طعمٌ يجمعنا في قلب الحرم الجامعي
-    </p>
-
-    <div class="hero-badge">
-      ☕ Campus Menu
-    </div>
-
-  </div>
-
-</header>
-
-
-<main class="container">
-
-  <!-- SEARCH -->
-
-  <div class="search-box">
-
-    <span class="search-icon">
-      🔍
-    </span>
-
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="ابحث عن صنف..."
-      oninput="searchMenu()"
-    >
-
-  </div>
-
-
-  <!-- CATEGORIES -->
-
-  <div class="category-nav">
-
-    <button class="category-btn active">
-      جميع الأصناف
-    </button>
-
-    <button class="category-btn">
-      🫓 المناقيش
-    </button>
-
-    <!-- لاحقاً يمكن إضافة:
-    <button class="category-btn">🍕 Pizza</button>
-    <button class="category-btn">🥪 Sandwiches</button>
-    <button class="category-btn">☕ Drinks</button>
-    -->
-
-  </div>
-
-
-  <!-- SECTION -->
-
-  <div class="section-header">
-
-    <div class="section-title">
-
-      <div class="section-icon">
-        🫓
+      <div class="eyebrow">
+        JINAN CAMPUS
       </div>
 
+      <h1>
+        Campus
+        <span class="light">
+          Café Menu
+        </span>
+      </h1>
+
+      <p class="hero-description">
+        نكهة طازجة، قهوة طيبة، وأجواء الجامعة...
+        كل شي بتحبه بمكان واحد في Jinan Campus Café.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          href="#menu"
+          class="hero-button"
+        >
+          <span>استكشف المنيو</span>
+          <span>↓</span>
+        </a>
+
+        <a
+          href="#cafe"
+          class="hero-button secondary"
+        >
+          ☕ Campus Vibes
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main class="page">
+
+
+    <!-- ======================================
+         VISUAL CARDS
+    ======================================= -->
+
+    <section class="experience-grid">
+
+      <article class="experience-card">
+
+        <img
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85"
+          alt="Fresh bakery"
+        >
+
+        <div class="experience-content">
+
+          <div class="experience-label">
+            FRESHLY BAKED
+          </div>
+
+          <div class="experience-title">
+            من الفرن مباشرة
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="experience-card">
+
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+          alt="Coffee"
+        >
+
+        <div class="experience-content">
+
+          <div class="experience-label">
+            CAMPUS COFFEE
+          </div>
+
+          <div class="experience-title">
+            وقت القهوة ☕
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="experience-card">
+
+        <img
+          src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=85"
+          alt="Cold drinks"
+        >
+
+        <div class="experience-content">
+
+          <div class="experience-label">
+            REFRESH
+          </div>
+
+          <div class="experience-title">
+            مشروبك المفضل
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- ======================================
+         SEARCH + FILTER
+    ======================================= -->
+
+    <section
+      class="menu-tools"
+      id="menu"
+    >
+
+      <div class="search">
+
+        <span class="search-icon">
+          🔍
+        </span>
+
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="شو عبالك اليوم؟ ابحث عن صنف..."
+        >
+
+      </div>
+
+
+      <div class="chips">
+
+        <button
+          class="chip active"
+          data-category="all"
+        >
+          الكل
+        </button>
+
+        <button
+          class="chip"
+          data-category="zaatar"
+        >
+          🌿 زعتر
+        </button>
+
+        <button
+          class="chip"
+          data-category="cheese"
+        >
+          🧀 جبنة
+        </button>
+
+        <button
+          class="chip"
+          data-category="labneh"
+        >
+          🥛 لبنة وقريشة
+        </button>
+
+        <button
+          class="chip"
+          data-category="meat"
+        >
+          🥩 لحمة
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         TITLE
+    ======================================= -->
+
+    <section class="menu-heading">
+
       <div>
+
+        <div class="menu-heading-small">
+          OUR MENU
+        </div>
 
         <h2>
           المناقيش
@@ -496,313 +1442,582 @@ footer{
 
       </div>
 
-    </div>
+      <div
+        class="count"
+        id="itemCount"
+      >
+        21 صنف
+      </div>
 
-    <div
-      class="item-count"
-      id="itemCount"
+    </section>
+
+
+    <!-- ======================================
+         FEATURE
+    ======================================= -->
+
+    <section class="feature-banner">
+
+      <div class="feature-banner-content">
+
+        <div class="mini">
+          CAMPUS FAVORITES
+        </div>
+
+        <h3>
+          سخنة، طازجة، وعالطلب 🔥
+        </h3>
+
+        <p>
+          اختار من تشكيلة المناقيش وخيارات العجين
+          واستمتع بترويقة سريعة بين المحاضرات.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         MENU ITEMS
+    ======================================= -->
+
+    <section
+      class="menu-grid"
+      id="menuGrid"
+    ></section>
+
+
+    <!-- ======================================
+         NO RESULTS
+    ======================================= -->
+
+    <section
+      class="no-results"
+      id="noResults"
     >
-      21 صنف
-    </div>
 
-  </div>
-
-
-  <!-- MENU -->
-
-  <div
-    class="menu-grid"
-    id="menuGrid"
-  >
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">زعتر</div>
+      <div class="emoji">
+        🔎
       </div>
-      <div class="price">50,000 ل.ل.</div>
-    </div>
 
+      <strong>
+        ما لقينا هالصنف
+      </strong>
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">زعتر حلبي</div>
+      <div style="margin-top:5px;">
+        جرّب كلمة تانية أو اختار قسم مختلف.
       </div>
-      <div class="price">50,000 ل.ل.</div>
-    </div>
+
+    </section>
 
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">زعتر مشروحة</div>
+    <!-- ======================================
+         DOUGH NOTE
+    ======================================= -->
+
+    <section class="note">
+
+      <div class="note-icon">
+        🫓
       </div>
-      <div class="price">70,000 ل.ل.</div>
-    </div>
 
+      <div>
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">زعتر خضار</div>
+        <strong>
+          خيارات العجين
+        </strong>
+
+        <p>
+          المناقيش متوفرة بالعجين العادي،
+          العجين الأسمر، وعالصاج.
+        </p>
+
       </div>
-      <div class="price">90,000 ل.ل.</div>
-    </div>
+
+    </section>
 
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">زعتر وجبنة</div>
-      </div>
-      <div class="price">150,000 ل.ل.</div>
-    </div>
+    <!-- ======================================
+         COFFEE / DRINKS TEASER
+    ======================================= -->
 
+    <section
+      class="drinks-section"
+      id="cafe"
+    >
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة</div>
-      </div>
-      <div class="price">150,000 ل.ل.</div>
-    </div>
+      <div class="drink-photo">
 
+        <div class="drink-photo-text">
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة إكسترا</div>
-      </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
+          <small>
+            A GOOD BREAK
+          </small>
 
+          <h3>
+            Coffee & Campus
+          </h3>
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة خضار</div>
-      </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة سجق</div>
-      </div>
-      <div class="price">250,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة حبش</div>
-      </div>
-      <div class="price">250,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة مرتديلا</div>
-      </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة بيبروني</div>
-      </div>
-      <div class="price">250,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة فور تشيز</div>
-      </div>
-      <div class="price">250,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">جبنة وبرينغلز</div>
-      </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">لبنة وخضار</div>
-      </div>
-      <div class="price">150,000 ل.ل.</div>
-    </div>
-
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">
-          لبنة وخضار ومرتديلا
         </div>
+
       </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
 
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">قريشة</div>
-      </div>
-      <div class="price">150,000 ل.ل.</div>
-    </div>
+      <div class="coming-panel">
 
-
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">
-          قريشة وجبنة
+        <div class="coming-tag">
+          JINAN CAMPUS CAFÉ
         </div>
-      </div>
-      <div class="price">200,000 ل.ل.</div>
-    </div>
 
+        <h3>
+          والـMenu بعدها عم تكبر...
+        </h3>
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">
-          تركية مع جبنة
+        <p>
+          قريبًا منضيف بنفس الصفحة أقسام المشروبات،
+          القهوة، البيتزا، الساندويش والحلويات
+          بنفس الهوية والتصميم.
+        </p>
+
+        <div class="coming-items">
+
+          <span class="coming-item">
+            ☕ Coffee
+          </span>
+
+          <span class="coming-item">
+            🥤 Drinks
+          </span>
+
+          <span class="coming-item">
+            🍕 Pizza
+          </span>
+
+          <span class="coming-item">
+            🥪 Sandwiches
+          </span>
+
+          <span class="coming-item">
+            🍰 Desserts
+          </span>
+
         </div>
+
       </div>
-      <div class="price">150,000 ل.ل.</div>
-    </div>
+
+    </section>
+
+  </main>
 
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">لحمة</div>
-      </div>
-      <div class="price">250,000 ل.ل.</div>
-    </div>
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
 
+  <footer>
 
-    <div class="menu-item">
-      <div class="item-info">
-        <div class="item-name">
-          لحمة مع جبنة
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="footer-brand">
+          JINAN CAMPUS
+          <span>CAFÉ</span>
         </div>
+
+        <div class="footer-text">
+          Your campus. Your break. Your café.
+        </div>
+
       </div>
-      <div class="price">300,000 ل.ل.</div>
+
+      <div class="footer-campus">
+        Al Jinan University<br>
+        Tripoli • Lebanon
+      </div>
+
     </div>
 
-  </div>
-
-
-  <!-- NO RESULTS -->
-
-  <div
-    class="no-results"
-    id="noResults"
-  >
-
-    <div style="font-size:35px;margin-bottom:10px;">
-      🔎
+    <div class="copyright">
+      © 2026 Jinan Campus Café
     </div>
 
-    لم نجد صنفًا مطابقًا لبحثك.
-
-  </div>
+  </footer>
 
 
-  <!-- NOTE -->
+  <script>
 
-  <div class="note">
+    /* ======================================
+       MENU DATA
+    ======================================= */
 
-    <strong>
-      خيارات العجين:
-    </strong>
+    const menuItems = [
 
-    تتوفر المناقيش بالعجين العادي،
-    العجين الأسمر، أو عالصاج.
+      {
+        name:"زعتر",
+        price:50000,
+        category:"zaatar",
+        icon:"🌿",
+        label:"زعتر"
+      },
 
-  </div>
+      {
+        name:"زعتر حلبي",
+        price:50000,
+        category:"zaatar",
+        icon:"🌿",
+        label:"زعتر"
+      },
 
-</main>
+      {
+        name:"زعتر مشروحة",
+        price:70000,
+        category:"zaatar",
+        icon:"🌿",
+        label:"زعتر"
+      },
+
+      {
+        name:"زعتر خضار",
+        price:90000,
+        category:"zaatar",
+        icon:"🥬",
+        label:"زعتر"
+      },
+
+      {
+        name:"زعتر وجبنة",
+        price:150000,
+        category:"zaatar",
+        icon:"🧀",
+        label:"زعتر وجبنة"
+      },
+
+      {
+        name:"جبنة",
+        price:150000,
+        category:"cheese",
+        icon:"🧀",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة اكسترا",
+        price:200000,
+        category:"cheese",
+        icon:"🧀",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة خضار",
+        price:200000,
+        category:"cheese",
+        icon:"🥬",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة سجق",
+        price:250000,
+        category:"cheese",
+        icon:"🌭",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة حبش",
+        price:250000,
+        category:"cheese",
+        icon:"🥪",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة مرتديلا",
+        price:200000,
+        category:"cheese",
+        icon:"🥪",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة بيبروني",
+        price:250000,
+        category:"cheese",
+        icon:"🍕",
+        label:"جبنة"
+      },
+
+      {
+        name:"جبنة فور تشيز",
+        price:250000,
+        category:"cheese",
+        icon:"🧀",
+        label:"Four Cheese"
+      },
+
+      {
+        name:"جبنة وبرينغلز",
+        price:200000,
+        category:"cheese",
+        icon:"🥔",
+        label:"جبنة"
+      },
+
+      {
+        name:"لبنة وخضار",
+        price:150000,
+        category:"labneh",
+        icon:"🥒",
+        label:"لبنة"
+      },
+
+      {
+        name:"لبنة وخضار ومرتديلا",
+        price:200000,
+        category:"labneh",
+        icon:"🥪",
+        label:"لبنة"
+      },
+
+      {
+        name:"قريشة",
+        price:150000,
+        category:"labneh",
+        icon:"🥛",
+        label:"قريشة"
+      },
+
+      {
+        name:"قريشة وجبنة",
+        price:200000,
+        category:"labneh",
+        icon:"🧀",
+        label:"قريشة"
+      },
+
+      {
+        name:"تركية مع جبنة",
+        price:150000,
+        category:"cheese",
+        icon:"🫓",
+        label:"Special"
+      },
+
+      {
+        name:"لحمة",
+        price:250000,
+        category:"meat",
+        icon:"🥩",
+        label:"لحمة"
+      },
+
+      {
+        name:"لحمة مع جبنة",
+        price:300000,
+        category:"meat",
+        icon:"🔥",
+        label:"لحمة وجبنة"
+      }
+
+    ];
 
 
-<footer>
-
-  <div class="footer-brand">
-    JINAN CAMPUS CAFÉ
-  </div>
-
-  <div class="footer-sub">
-    Al Jinan University • Tripoli, Lebanon
-  </div>
-
-  <div class="copyright">
-    © 2026 Jinan Campus Café
-  </div>
-
-</footer>
+    let currentCategory = "all";
 
 
-<script>
+    const grid =
+      document.getElementById("menuGrid");
 
-function searchMenu(){
+    const searchInput =
+      document.getElementById("searchInput");
 
-  const search =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
+    const itemCount =
+      document.getElementById("itemCount");
 
-  const items =
-    document.querySelectorAll(
-      ".menu-item"
-    );
-
-  let visible = 0;
+    const noResults =
+      document.getElementById("noResults");
 
 
-  items.forEach(function(item){
+    /* ======================================
+       PRICE
+    ======================================= */
 
-    const name =
-      item
-        .querySelector(".item-name")
-        .textContent
-        .toLowerCase();
+    function formatPrice(price){
 
-
-    if(name.includes(search)){
-
-      item.style.display =
-        "flex";
-
-      visible++;
-
-    }else{
-
-      item.style.display =
-        "none";
+      return new Intl.NumberFormat(
+        "en-US"
+      ).format(price);
 
     }
 
-  });
+
+    /* ======================================
+       RENDER
+    ======================================= */
+
+    function renderMenu(){
+
+      const search =
+        searchInput
+          .value
+          .trim()
+          .toLowerCase();
 
 
-  document
-    .getElementById("itemCount")
-    .textContent =
-      visible + " صنف";
+      const filtered =
+        menuItems.filter(item => {
+
+          const categoryMatches =
+            currentCategory === "all" ||
+            item.category === currentCategory;
 
 
-  document
-    .getElementById("noResults")
-    .style.display =
-      visible === 0
-        ? "block"
-        : "none";
+          const searchMatches =
+            !search ||
+            item.name
+              .toLowerCase()
+              .includes(search);
 
-}
 
-</script>
+          return (
+            categoryMatches &&
+            searchMatches
+          );
+
+        });
+
+
+      grid.innerHTML = "";
+
+
+      filtered.forEach(
+        (item,index) => {
+
+          const card =
+            document.createElement("article");
+
+
+          card.className =
+            "menu-item";
+
+
+          card.style.animationDelay =
+            `${index * 35}ms`;
+
+
+          card.innerHTML = `
+
+            <div class="food-info">
+
+              <div class="food-icon">
+                ${item.icon}
+              </div>
+
+              <div>
+
+                <div class="food-name">
+                  ${item.name}
+                </div>
+
+                <div class="food-category">
+                  ${item.label}
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="price">
+
+              ${formatPrice(item.price)}
+
+              <small>
+                ليرة لبنانية
+              </small>
+
+            </div>
+
+          `;
+
+
+          grid.appendChild(card);
+
+        }
+      );
+
+
+      itemCount.textContent =
+        `${filtered.length} صنف`;
+
+
+      noResults.style.display =
+        filtered.length
+          ? "none"
+          : "block";
+
+    }
+
+
+    /* ======================================
+       SEARCH
+    ======================================= */
+
+    searchInput.addEventListener(
+      "input",
+      renderMenu
+    );
+
+
+    /* ======================================
+       FILTER CHIPS
+    ======================================= */
+
+    document
+      .querySelectorAll(".chip")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            document
+              .querySelectorAll(".chip")
+              .forEach(
+                chip =>
+                  chip.classList.remove(
+                    "active"
+                  )
+              );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            currentCategory =
+              button.dataset.category;
+
+
+            renderMenu();
+
+          }
+        );
+
+      });
+
+
+    /* ======================================
+       INITIAL
+    ======================================= */
+
+    renderMenu();
+
+  </script>
 
 </body>
 </html>
