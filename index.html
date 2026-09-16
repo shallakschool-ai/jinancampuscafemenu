@@ -1502,7 +1502,10 @@
       });
       updateSectionCopy();
       render();
-      document.getElementById("menu").scrollIntoView({behavior:"smooth",block:"start"});
+      requestAnimationFrame(() => {
+        const firstPrice = document.querySelector("#menuGrid .menu-card");
+        if(firstPrice) firstPrice.scrollIntoView({behavior:"smooth",block:"center"});
+      });
     }
 
     const baguetteLaunch = document.getElementById("baguetteLaunch");
@@ -1527,7 +1530,10 @@
       featureTitle.textContent = "كريمية، ساخنة، ومشبعة";
       featureText.textContent = "فيتوتشيني متوفرة بأحجام مختلفة.";
       render();
-      document.getElementById("menu").scrollIntoView({behavior:"smooth",block:"start"});
+      requestAnimationFrame(() => {
+        const firstPrice = document.querySelector("#menuGrid .menu-card");
+        if(firstPrice) firstPrice.scrollIntoView({behavior:"smooth",block:"center"});
+      });
     }
     fettuccineLaunch.addEventListener("click",openFettuccine);
     fettuccineLaunch.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openFettuccine();}});
