@@ -1331,7 +1331,8 @@
 
     [
       ["باغيت 7 حبوب وشوفان – خلطة تركية، جبنة وحبش",250000,""],
-      ["باغيت 7 حبوب وشوفان – لبنة وخضار وزيتون",150000,""]
+      ["باغيت 7 حبوب وشوفان – لبنة وخضار وزيتون",150000,""],
+      ["باغيت 7 حبوب وشوفان – سلطة التونا",250000,""]
     ].forEach(([name,price,icon]) =>
       items.push({name,price,icon,category:"baguette"})
     );
@@ -1421,11 +1422,8 @@
         btn.textContent = label;
 
         btn.addEventListener("click",() => {
-          document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          activeCategory = id;
-          updateSectionCopy();
-          render();
+          searchInput.value = "";
+          activateCategory(id);
         });
 
         categoryStrip.appendChild(btn);
